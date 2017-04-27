@@ -12,7 +12,7 @@ public class ProfActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_select);
-        String[] courses = {"CMSC420","CMSC69","CMSC850"};
+        //DELETED STRING ARRAY THING
         findViewById(R.id.course1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
