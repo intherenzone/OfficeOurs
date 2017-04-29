@@ -1,21 +1,24 @@
 package edu.umd.cs.officeours.model;
 
-/**
- * Created by Dtrevino on 4/29/2017.
- */
 
-public class Day {
+
+ class Day {
     private int startTime;
     private int endTime;
     private DayEnum dayEnum;
 
-    public Day(DayEnum dayEnum){
+    Day(DayEnum dayEnum){
         this.dayEnum = dayEnum;
     }
 
-    public void setTimeSlot(int startTime, int endTime){
+    boolean setTimeSlot(int startTime, int endTime){
         this.startTime = startTime;
         this.endTime = endTime;
+        return true;
+    }
+
+    DayEnum getDayEnum(){
+        return this.dayEnum;
     }
 
 

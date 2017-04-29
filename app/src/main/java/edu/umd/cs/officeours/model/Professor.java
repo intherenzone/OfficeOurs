@@ -1,7 +1,6 @@
 package edu.umd.cs.officeours.model;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.UUID;
 
 /**
@@ -24,8 +23,27 @@ public class Professor implements Serializable {
         }
     }
 
-    public boolean setSchedule(Day day, int startTime,int endTime){
-        return true;
+    public boolean setScheduleForDay(DayEnum dayEnum, int startTime,int endTime){
+        //Access day in array.
+        int i;
+        for(i = 0; i < days.length; i++){
+            if(days[i].getDayEnum() == dayEnum){
+                break;
+            }
+        }
+
+        return (days[i].setTimeSlot(startTime, endTime)) ? true : false;
+
+    }
+
+    public Day getScheduleForDay(DayEnum dayEnum){
+        int i;
+        for(i = 0; i < days.length; i++){
+            if(days[i].getDayEnum() == dayEnum){
+                break;
+            }
+        }
+        return days[i];
     }
 
 
