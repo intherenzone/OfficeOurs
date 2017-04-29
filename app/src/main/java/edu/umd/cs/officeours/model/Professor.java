@@ -11,6 +11,7 @@ public class Professor implements Serializable {
     private Day[] days;
     private String id;
     private String name;
+    private Course[] courses;
 
     //This can handle professors with identical names. Might be a problem if searching by name.
     public Professor(String name){
@@ -32,7 +33,7 @@ public class Professor implements Serializable {
             }
         }
 
-        return (days[i].setTimeSlot(startTime, endTime)) ? true : false;
+        return (days[i].setTimeSlot(startTime, endTime));
 
     }
 
