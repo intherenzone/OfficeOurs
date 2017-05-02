@@ -1,5 +1,6 @@
 package edu.umd.cs.officeours;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,8 @@ public class ProfActivity extends AppCompatActivity {
                 picture.setMinimumHeight(layout.getHeight());
                 layout.removeView(findViewById(R.id.buttonCluster));
                 layout.addView(picture);
-
+                Intent intent = new Intent(ProfActivity.this, Course.class);
+                startActivity(intent);
             }
         });
 

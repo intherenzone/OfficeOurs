@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MapActivity"/>
+        <activity android:name=".MapActivity" />
         <activity android:name=".ProfActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,9 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-
-
+        <activity android:name=".MainActivity" />
+        <activity android:name=".TaHours" />
+        <activity android:name=".Course"></activity>
     </application>
 
 </manifest>
