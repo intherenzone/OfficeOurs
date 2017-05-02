@@ -34,7 +34,7 @@
         >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/Available_Knock_Button"
             android:gravity="center"
             android:layout_width="150dp"
             android:layout_height="match_parent"
@@ -45,7 +45,7 @@
         />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/Prof_Back_In_Five_Min_Button"
             android:gravity="center"
             android:layout_width="150dp"
             android:layout_height="match_parent"
@@ -65,7 +65,7 @@
         android:layout_weight="1.0"
         >
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/Open_Prof_Interface_Button"
             android:gravity="center"
             android:layout_width="150dp"
             android:layout_height="match_parent"
@@ -76,7 +76,7 @@
             />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/Away_Button"
             android:gravity="center"
             android:layout_width="150dp"
             android:layout_height="match_parent"
@@ -97,7 +97,7 @@
         android:layout_weight="1.0"
         >
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/Do_Not_Disturb_button"
             android:gravity="center"
             android:layout_width="160dp"
             android:layout_height="match_parent"
