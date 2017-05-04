@@ -7,12 +7,12 @@ import edu.umd.cs.officeours.services.impl.InMemoryProfService;
 
 
 
-public class DependencyFactory {
+class DependencyFactory {
 
     private static ProfService profService;
 
 
-    public static ProfService getStoryService(Context context) {
+    static ProfService getProfService(Context context) {
         if (profService == null) {
             profService = new InMemoryProfService(context);
         }

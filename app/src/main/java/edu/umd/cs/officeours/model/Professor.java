@@ -1,6 +1,9 @@
 package edu.umd.cs.officeours.model;
 
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.support.annotation.NonNull;
+import android.widget.ImageView;
 
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -13,6 +16,7 @@ public class Professor implements Serializable, Comparable<Professor> {
     private Day[] days;
     private String id;
     private String name;
+    private Bitmap picBitmap;
     private List<Course> courses;
 
     //This can handle professors with identical names. Might be a problem if searching by name.
@@ -87,5 +91,9 @@ public class Professor implements Serializable, Comparable<Professor> {
         }else{
             return 0;
         }
+    }
+
+    public Bitmap getPicBitmap(){
+        return this.picBitmap;
     }
 }
