@@ -8,4 +8,5 @@ public class MapActivity extends Activity {
     protected Fragment createFragment() {
         return MapFragment.newInstance();
     }
+//    testing changes
 }
