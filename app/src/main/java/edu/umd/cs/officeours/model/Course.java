@@ -2,9 +2,7 @@ package edu.umd.cs.officeours.model;
 
 import android.widget.ImageView;
 
-/**
- * Created by Dtrevino on 4/29/2017.
- */
+
 
 class Course {
     private String courseName;
@@ -12,6 +10,10 @@ class Course {
 
     Course(String courseName){
         this.courseName = courseName;
+    }
+
+    String getCourseName(){
+        return this.courseName;
     }
 
 }
