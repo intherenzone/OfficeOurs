@@ -32,6 +32,15 @@ public class Professor implements Serializable, Comparable<Professor> {
         courses = new LinkedList<>();
     }
 
+    public void setPicBitmap(Bitmap bitmapImage){
+        this.picBitmap = bitmapImage;
+    }
+
+    public Bitmap getPicBitmap(){
+        return this.picBitmap;
+    }
+
+
     public boolean setScheduleForDay(DayEnum dayEnum, int startTime,int endTime){
         //Access day in array.
         int i;
@@ -93,7 +102,5 @@ public class Professor implements Serializable, Comparable<Professor> {
         }
     }
 
-    public Bitmap getPicBitmap(){
-        return this.picBitmap;
-    }
+
 }

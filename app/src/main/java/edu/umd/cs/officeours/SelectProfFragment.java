@@ -3,12 +3,13 @@ package edu.umd.cs.officeours;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,15 @@ public class SelectProfFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_prof_select, container, false);
+
+        //THIS IS FOR DEMO SETUP. NEED TO ADD COURSES TO THESE GUYS TOO
+        Professor nelson = new Professor("Nelson Padua Perez");
+        Professor kruskal = new Professor("Clyde Kruskal");
+        nelson.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
+        kruskal.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
+        profService.addProfessorToList(nelson);
+        profService.addProfessorToList(kruskal);
+
 
         professorRecyclerView = (RecyclerView)view.findViewById(R.id.prof_recycler_view);
         professorRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -91,7 +101,7 @@ public class SelectProfFragment extends Fragment {
 
         private Professor professor;
 
-        public ProfessorHolder(View itemView) {
+        ProfessorHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
 
@@ -100,7 +110,7 @@ public class SelectProfFragment extends Fragment {
 
         }
 
-        public void bindProfessor(Professor professor) {
+        void bindProfessor(Professor professor) {
             this.professor = professor;
 
             profNameTextView.setText(professor.getName());
@@ -118,11 +128,11 @@ public class SelectProfFragment extends Fragment {
     private class ProfessorAdapter extends RecyclerView.Adapter<ProfessorHolder> {
         private List<Professor> professors;
 
-        public ProfessorAdapter(List<Professor> professors) {
+        ProfessorAdapter(List<Professor> professors) {
             this.professors = professors;
         }
 
-        public void setProfessors(List<Professor> professors) {
+        void setProfessors(List<Professor> professors) {
             this.professors = professors;
         }
 
