@@ -19,7 +19,8 @@
         <activity android:name=".TaHours" />
         <activity android:name=".MapActivity" />
         <activity android:name=".Course" />
-        <activity android:name=".StatusActivity"></activity>
+        <activity android:name=".StatusActivity" />
+        <activity android:name=".CreateProfessor"></activity>
     </application>
 
 </manifest>
