@@ -8,7 +8,7 @@ import edu.umd.cs.officeours.model.Professor;
 public interface ProfService {
     void addProfessorToList(Professor professor);
     List<Professor> getAllProfessors();
-    Professor getProfessorByName(String profName);
+    Professor getProfessorByLastName(String profName);
 
 
 }

@@ -11,6 +11,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import edu.umd.cs.officeours.model.Course;
 import edu.umd.cs.officeours.model.Professor;
 import edu.umd.cs.officeours.services.ProfService;
 
@@ -31,8 +34,15 @@ public class SelectProfFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         profService = DependencyFactory.getProfService(getActivity().getApplicationContext());
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_prof_select, menu);
     }
 
     @Nullable
@@ -40,13 +50,42 @@ public class SelectProfFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_prof_select, container, false);
 
-        //THIS IS FOR DEMO SETUP. NEED TO ADD COURSES TO THESE GUYS TOO
-        Professor nelson = new Professor("Nelson Padua Perez");
-        Professor kruskal = new Professor("Clyde Kruskal");
+        //THIS IS FOR DEMO SETUP.
+        Professor nelson = new Professor("Nelson", "Padua Perez");
+        Professor kruskal = new Professor("Clyde", "Kruskal");
+        Professor song = new Professor("Charles","Song");
+        Professor mamat = new Professor("Anwar", "Mamat");
+        Professor davis = new Professor("Larry", "Davis");
+        Professor gasarch = new Professor("Billy", "Gesarch");
+        Professor herman = new Professor("Larry", "Herman");
         nelson.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
         kruskal.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
+        song.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
+        mamat.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
+        davis.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
+        gasarch.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
+        herman.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
+        Course course1=new Course("CMSC216-0101");
+        Course course2=new Course("CMSC351-0101");
+        Course course3=new Course("CMSC132-0101");
+        Course course4=new Course("CMSC451-0101");
+        course1.setTAOfficeHours(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_my_calendar));
+        course2.setTAOfficeHours(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_my_calendar));
+        course3.setTAOfficeHours(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_my_calendar));
+        course4.setTAOfficeHours(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_my_calendar));
+        nelson.setCourse(course1);
+        nelson.setCourse(course3);
+        kruskal.setCourse(course4);
+        kruskal.setCourse(course2);
         profService.addProfessorToList(nelson);
         profService.addProfessorToList(kruskal);
+        profService.addProfessorToList(gasarch);
+        profService.addProfessorToList(song);
+        profService.addProfessorToList(mamat);
+        profService.addProfessorToList(davis);
+        profService.addProfessorToList(herman);
+        //END DEMO SETUP
+
 
 
         professorRecyclerView = (RecyclerView)view.findViewById(R.id.prof_recycler_view);
@@ -113,7 +152,7 @@ public class SelectProfFragment extends Fragment {
         void bindProfessor(Professor professor) {
             this.professor = professor;
 
-            profNameTextView.setText(professor.getName());
+            profNameTextView.setText(professor.getFName() + " " + professor.getLName());
             profPicImageView.setImageBitmap(professor.getPicBitmap());
 
         }

@@ -9,4 +9,7 @@
     <string name="button4">Button4</string>
 
     <string name="button5">Button5</string>
+    <string name="create_professor_button">Create Professor</string>
+    <string name="map_button">View Map</string>
+    <string name="prof_image">Professor Image</string>
 </resources>

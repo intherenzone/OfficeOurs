@@ -1,19 +1,27 @@
 package edu.umd.cs.officeours.model;
-
-import android.widget.ImageView;
-
+import android.graphics.Bitmap;
 
 
-class Course {
+
+
+public class Course {
     private String courseName;
-    private ImageView taOfficeHours;
+    private Bitmap taOfficeHours;
 
-    Course(String courseName){
+    public Course(String courseName){
         this.courseName = courseName;
     }
 
-    String getCourseName(){
+    public String getCourseName(){
         return this.courseName;
+    }
+
+    public Bitmap getTAOfficeHours(){
+        return taOfficeHours;
+    }
+
+    public void setTAOfficeHours(Bitmap taOfficeHours){
+        this.taOfficeHours = taOfficeHours;
     }
 
 }

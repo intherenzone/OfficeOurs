@@ -21,20 +21,25 @@ public class InMemoryProfService implements ProfService{
         this.professorList = new ArrayList<>();
     }
 
+
     public void addProfessorToList(Professor professor) {
-        Professor currProfessor = getProfessorByName(professor.getName());
+        Professor currProfessor = getProfessorByLastName(professor.getLName());
         if (currProfessor == null) {
             professorList.add(professor);
         } else {
+            if(professor.getFName().compareTo(currProfessor.getFName()) != 0){
+                professorList.add(professor);
+                return;
+            }
             professorList.remove(currProfessor);
             professorList.add(professor);
         }
     }
 
-    public Professor getProfessorByName(String profName){
-        if(profName == null){return null;}
+    public Professor getProfessorByLastName(String profLName){
+        if(profLName == null){return null;}
         for(Professor prof : professorList){
-            if(prof.getName().compareTo(profName) == 0){
+            if(prof.getLName().compareTo(profLName) == 0){
                 return prof;
             }
         }

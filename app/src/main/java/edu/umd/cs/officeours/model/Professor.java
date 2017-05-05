@@ -15,14 +15,16 @@ import java.util.UUID;
 public class Professor implements Serializable, Comparable<Professor> {
     private Day[] days;
     private String id;
-    private String name;
+    private String lName;
+    private String fName;
     private Bitmap picBitmap;
     private List<Course> courses;
 
     //This can handle professors with identical names. Might be a problem if searching by name.
-    public Professor(String name){
+    public Professor(String fName,String lName){
         //Storing every name in upper case for easy comparison.
-        this.name = name.toUpperCase();
+        this.fName = fName.toUpperCase();
+        this.lName = lName.toUpperCase();
         this.id = UUID.randomUUID().toString();
         days = new Day[7];
         int dayIndex = 0;
@@ -64,15 +66,14 @@ public class Professor implements Serializable, Comparable<Professor> {
         return days[i];
     }
 
-    public boolean setCourse(String courseName){
+    public boolean setCourse(Course newCourse){
 
         for(Course course : courses){
-            if(courseName.compareTo(course.getCourseName()) == 0){
+            if(newCourse.getCourseName().compareTo(course.getCourseName()) == 0){
                 return false;
             }
         }
-
-        courses.add(new Course(courseName));
+        courses.add(newCourse);
         return true;
     }
 
@@ -84,20 +85,28 @@ public class Professor implements Serializable, Comparable<Professor> {
                 return course;
             }
         }
-
         return null;
     }
     //CAN RETURN NULL
-    public String getName(){
-        return this.name;
+    public String getFName(){
+        return this.fName;
     }
+    public String getLName(){
+        return this.lName;
+    }
+
     @Override
     public int compareTo(@NonNull Professor professor){
-        if(this.getName().compareTo(professor.getName()) > 0){
+        if(this.getLName().compareTo(professor.getLName()) > 0){
             return 1;
-        }else if(this.getName().compareTo(professor.getName()) < 0){
+        }else if(this.getLName().compareTo(professor.getLName()) < 0){
             return -1;
         }else{
+            if(this.getFName().compareTo(professor.getFName()) > 0){
+                return 1;
+            }else if(this.getFName().compareTo(professor.getFName()) < 0) {
+                return -1;
+            }
             return 0;
         }
     }
