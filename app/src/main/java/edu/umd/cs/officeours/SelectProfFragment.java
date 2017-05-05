@@ -159,8 +159,8 @@ public class SelectProfFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-//            Intent intent = StoryActivity.newIntent(getActivity(), story.getId());
-//            startActivityForResult(intent, REQUEST_CODE_CREATE_STORY);
+            Intent intent = ProfActivity.newIntent(getActivity(), professor.getProfID());
+            startActivity(intent);
         }
     }
 

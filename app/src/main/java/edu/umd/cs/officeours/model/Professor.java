@@ -18,7 +18,7 @@ public class Professor implements Serializable, Comparable<Professor> {
     private String lName;
     private String fName;
     private Bitmap picBitmap;
-    private List<Course> courses;
+    public List<Course> courses;
 
     //This can handle professors with identical names. Might be a problem if searching by name.
     public Professor(String fName,String lName){
@@ -33,6 +33,10 @@ public class Professor implements Serializable, Comparable<Professor> {
         }
         courses = new LinkedList<>();
     }
+
+
+
+    public String getProfID(){return this.id;}
 
     public void setPicBitmap(Bitmap bitmapImage){
         this.picBitmap = bitmapImage;

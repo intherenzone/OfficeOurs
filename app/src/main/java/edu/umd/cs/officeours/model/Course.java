@@ -1,10 +1,10 @@
 package edu.umd.cs.officeours.model;
 import android.graphics.Bitmap;
 
+import java.io.Serializable;
 
 
-
-public class Course {
+public class Course implements Serializable {
     private String courseName;
     private Bitmap taOfficeHours;
 
