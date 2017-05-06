@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,6 +31,7 @@ public class ProfActivity extends AppCompatActivity {
         List<Professor> profList = profService.getAllProfessors();
         String profID = getIntent().getStringExtra(EXTRA_PROF);
         Professor currProfessor = null;
+
         for(Professor p : profList){
             if(p.getProfID().compareTo(profID) == 0){
                 currProfessor = p;
@@ -38,24 +40,33 @@ public class ProfActivity extends AppCompatActivity {
         }
 
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.buttonLayout);
+        final LinearLayout buttonLayout = (LinearLayout) findViewById(R.id.buttonLayout);
+        LinearLayout buttonCluster = (LinearLayout)findViewById(R.id.buttonCluster);
         for(final Course course : currProfessor.courses){
             Button button =  new Button(getApplicationContext());
             button.setText(course.getCourseName());
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.gravity = Gravity.CENTER;
+            button.setLayoutParams(params);
+
+
             button.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View view){
                     LinearLayout layout = (LinearLayout) findViewById(R.id.buttonLayout);
                     Bitmap taHoursBitmap = course.getTAOfficeHours();
-                    ImageView taHoursImageView = null;
+                    ImageView taHoursImageView = new ImageView(getApplicationContext());
                     taHoursImageView.setImageBitmap(taHoursBitmap);
                     taHoursImageView.setMinimumWidth(layout.getWidth());
                     taHoursImageView.setMinimumHeight(layout.getHeight());
-                    layout.removeView(findViewById(R.id.buttonCluster));
-                    layout.addView(taHoursImageView);
+                    buttonLayout.removeView(findViewById(R.id.buttonCluster));
+                    buttonLayout.addView(taHoursImageView);
                 }
             });
-            layout.addView(button);
+
+            buttonCluster.addView(button);
         }
+
 
         //DELETED STRING ARRAY THING
 //        findViewById(R.id.course1).setOnClickListener(new View.OnClickListener() {

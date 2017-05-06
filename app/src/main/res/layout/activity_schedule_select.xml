@@ -108,6 +108,11 @@
             android:layout_gravity="center"
             android:orientation="vertical"
             android:id="@+id/buttonCluster">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Courses"/>
             <!--<Button-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
