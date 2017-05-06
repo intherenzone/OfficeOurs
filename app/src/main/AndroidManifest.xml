@@ -21,6 +21,7 @@
         <activity android:name=".ProfActivity" />
         <activity android:name=".StatusActivity" />
         <activity android:name=".logIn" />
+        <activity android:name=".createProfessor" />
 
     </application>
 

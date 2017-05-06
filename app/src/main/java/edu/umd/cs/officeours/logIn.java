@@ -1,5 +1,6 @@
 package edu.umd.cs.officeours;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -24,6 +25,8 @@ public class logIn extends AppCompatActivity {
             public void onClick(View v) {
                 if (user.getText().toString().equals("admin") && pass.getText().toString().equals("1")) {
                     Toast.makeText(getApplicationContext(), "connecting...", Toast.LENGTH_SHORT).show();
+                    Intent createStoryIntent = new Intent(getBaseContext(), createProfessor.class);
+                    startActivity(createStoryIntent);
                 } else {
                     Toast.makeText(getApplicationContext(), "wrong information", Toast.LENGTH_SHORT).show();
                 }
