@@ -10,7 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import edu.umd.cs.officeours.model.Course;
@@ -37,6 +41,37 @@ public class ProfActivity extends AppCompatActivity {
                 currProfessor = p;
                 break;
             }
+        }
+        TextView profNameTextView = (TextView) findViewById(R.id.professor_name);
+        profNameTextView.setText(currProfessor.getFName() + " " + currProfessor.getLName());
+
+        TextView officeHoursTextView = (TextView) findViewById(R.id.office_hour_text);
+        Calendar calendar = Calendar.getInstance();
+        String dayOfWeekNumber = String.valueOf(calendar.get(Calendar.DAY_OF_WEEK));
+
+        //GONNA CHANGE THIS TO SHOW OFFICE HOURS FOR THAT PARTICULAR DAY
+        switch(dayOfWeekNumber){
+            case "1":
+                officeHoursTextView.setText("Sunday");
+                break;
+            case "2":
+                officeHoursTextView.setText("Monday");
+                break;
+            case "3":
+                officeHoursTextView.setText("Tuesday");
+                break;
+            case "4":
+                officeHoursTextView.setText("Wednesday");
+                break;
+            case "5":
+                officeHoursTextView.setText("Thursday");
+                break;
+            case "6":
+                officeHoursTextView.setText("Friday");
+                break;
+            default:
+                officeHoursTextView.setText("Saturday");
+                break;
         }
 
 

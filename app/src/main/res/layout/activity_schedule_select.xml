@@ -51,7 +51,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textAlignment="center"
-                    android:text="PROF NAME GOES HERE LONG"/>
+                    android:text="PROF NAME GOES HERE LONG"
+                    android:id="@+id/professor_name"/>
 
             </LinearLayout>
 
@@ -112,7 +113,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Courses"/>
+                android:text="@string/courses_header"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"/>
             <!--<Button-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
@@ -150,7 +153,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="OFFICE HOURS GO HERE"/>
+                android:text="OFFICE HOURS GO HERE"
+                android:id = "@+id/office_hour_text"/>
 
         </LinearLayout>
 

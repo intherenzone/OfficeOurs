@@ -21,6 +21,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import edu.umd.cs.officeours.model.Course;
+import edu.umd.cs.officeours.model.DayEnum;
 import edu.umd.cs.officeours.model.Professor;
 import edu.umd.cs.officeours.services.ProfService;
 
@@ -77,6 +78,8 @@ public class SelectProfFragment extends Fragment {
         nelson.setCourse(course3);
         kruskal.setCourse(course4);
         kruskal.setCourse(course2);
+        nelson.setScheduleForDay(DayEnum.MONDAY, 1300, 1500);
+        nelson.setScheduleForDay(DayEnum.SUNDAY, 1000, 1200);
         profService.addProfessorToList(nelson);
         profService.addProfessorToList(kruskal);
         profService.addProfessorToList(gasarch);
