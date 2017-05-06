@@ -7,15 +7,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="0.1"
-        android:baselineAligned="false">
+        android:layout_weight="0.1">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_weight="1"
-            >
+            android:layout_weight="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,8 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textAlignment="center"
-                    android:text="PROF NAME GOES HERE LONG"
-                    android:id="@+id/professor_name"/>
+                    android:text="PROF NAME GOES HERE LONG"/>
 
             </LinearLayout>
 
@@ -60,28 +57,28 @@
         </LinearLayout>
 
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:layout_weight="1">-->
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:orientation="vertical">-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
-                <!--<Button-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:textAlignment="center"-->
-                    <!--android:text="Change Prof"/>-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:text="TIME GOES HERE"/>
 
-            <!--</LinearLayout>-->
+            </LinearLayout>
 
 
-        <!--</LinearLayout>-->
+        </LinearLayout>
 
 
 
@@ -89,49 +86,70 @@
     </LinearLayout>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="left"
         android:orientation="horizontal"
-        android:layout_weight="0.7"
-        android:id="@+id/buttonLayout">
+        android:layout_weight="0.7" >
 
-        <!--<ImageView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:src="@android:drawable/star_big_on"/>-->
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
             android:orientation="vertical"
-            android:id="@+id/buttonCluster">
+            android:layout_weight="1"
+            android:padding="20dp">
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/courses_header"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"/>
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginBottom="@dimen/activity_vertical_margin"-->
-                <!--android:id="@+id/course1"-->
-                <!--android:text="COURSE 1"-->
-                <!--/>-->
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:id="@+id/course2"-->
-                <!--android:text="COURSE 2"/>-->
+                android:layout_gravity="left"
+
+                android:text="Positions: "/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+
+                android:text="Contact: "/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+
+                android:text="Research: "/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+
+                android:text="Current Semester Courses: "/>
+
+
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1.5"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/default_profile_pic"
+                />
+
+        </LinearLayout>
+
 
 
     </LinearLayout>
@@ -153,8 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="OFFICE HOURS GO HERE"
-                android:id = "@+id/office_hour_text"/>
+                android:text="OFFICE HOURS GO HERE"/>
 
         </LinearLayout>
 
@@ -176,6 +193,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TA HOURS"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONTACT"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MAP"
             />
 
     </LinearLayout>

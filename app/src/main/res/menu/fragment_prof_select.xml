@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_item_create_professor"
+        android:title="@string/create_professor_button"
+        android:icon="@android:drawable/ic_menu_add"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/menu_item_map"
+        android:title="@string/map_button"
+        android:icon="@android:drawable/ic_menu_mapmode"
+        app:showAsAction="always"/>
+</menu>
