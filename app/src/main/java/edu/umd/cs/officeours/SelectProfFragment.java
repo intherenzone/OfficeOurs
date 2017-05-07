@@ -93,7 +93,8 @@ public class SelectProfFragment extends Fragment {
         kruskal.setCourse(course4);
         kruskal.setCourse(course2);
         nelson.setScheduleForDay(DayEnum.MONDAY, 1300, 1500);
-        nelson.setScheduleForDay(DayEnum.SUNDAY, 1000, 1200);
+        nelson.setScheduleForDay(DayEnum.SATURDAY, 1000, 1200);
+        nelson.setScheduleForDay(DayEnum.SATURDAY, 30, 100);
         profService.addProfessorToList(nelson);
         profService.addProfessorToList(kruskal);
         profService.addProfessorToList(gasarch);
