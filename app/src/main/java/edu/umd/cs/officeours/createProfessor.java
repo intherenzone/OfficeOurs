@@ -39,6 +39,61 @@ public class createProfessor extends AppCompatActivity {
         professorOfficeNumber = (EditText) findViewById(R.id.professorOfficeNumberID);
         professorDescription = (EditText) findViewById(R.id.professorDescriptionID);
 
+        mondayButton.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+                                            }
+                                        }
+        );
+
+        tuesdayButton.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View v) {
+
+                                             }
+                                         }
+        );
+
+        wednesdayButton.setOnClickListener(new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View v) {
+
+                                               }
+                                           }
+        );
+
+        thursdayButton.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+
+                                              }
+                                          }
+        );
+
+        fridayButton.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+                                            }
+                                        }
+        );
+
+        saturdayButton.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+
+                                              }
+                                          }
+        );
+
+        sundayButton.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+                                            }
+                                        }
+        );
         //end ,when saved it clicked
         saveButton.setOnClickListener(new View.OnClickListener() {
                                           @Override
