@@ -1,22 +1,21 @@
 package edu.umd.cs.officeours;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -26,11 +25,11 @@ import edu.umd.cs.officeours.model.Professor;
 import edu.umd.cs.officeours.services.ProfService;
 
 
-
 public class SelectProfFragment extends Fragment {
     private ProfService profService;
     private RecyclerView professorRecyclerView;
     private ProfessorAdapter adapter;
+    private static final int REQUEST_CODE_CREATE_PROFESSOR = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,15 +45,30 @@ public class SelectProfFragment extends Fragment {
         inflater.inflate(R.menu.fragment_prof_select, menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_item_create_professor:
+                Intent createStoryIntent = new Intent(getActivity(), logIn.class);
+                startActivity(createStoryIntent);
+                return true;
+            case R.id.menu_item_map:
+                Toast.makeText(getContext(), "test this", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_prof_select, container, false);
+        //set up for add professor button
 
         //THIS IS FOR DEMO SETUP.
         Professor nelson = new Professor("Nelson", "Padua Perez");
         Professor kruskal = new Professor("Clyde", "Kruskal");
-        Professor song = new Professor("Charles","Song");
+        Professor song = new Professor("Charles", "Song");
         Professor mamat = new Professor("Anwar", "Mamat");
         Professor davis = new Professor("Larry", "Davis");
         Professor gasarch = new Professor("Billy", "Gesarch");
@@ -66,10 +80,10 @@ public class SelectProfFragment extends Fragment {
         davis.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
         gasarch.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
         herman.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
-        Course course1=new Course("CMSC216-0101");
-        Course course2=new Course("CMSC351-0101");
-        Course course3=new Course("CMSC132-0101");
-        Course course4=new Course("CMSC451-0101");
+        Course course1 = new Course("CMSC216-0101");
+        Course course2 = new Course("CMSC351-0101");
+        Course course3 = new Course("CMSC132-0101");
+        Course course4 = new Course("CMSC451-0101");
         course1.setTAOfficeHours(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_my_calendar));
         course2.setTAOfficeHours(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_my_calendar));
         course3.setTAOfficeHours(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_my_calendar));
@@ -90,8 +104,7 @@ public class SelectProfFragment extends Fragment {
         //END DEMO SETUP
 
 
-
-        professorRecyclerView = (RecyclerView)view.findViewById(R.id.prof_recycler_view);
+        professorRecyclerView = (RecyclerView) view.findViewById(R.id.prof_recycler_view);
         professorRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
@@ -102,7 +115,6 @@ public class SelectProfFragment extends Fragment {
     public static SelectProfFragment newInstance() {
         return new SelectProfFragment();
     }
-
 
 
     private void updateUI() {
@@ -147,8 +159,8 @@ public class SelectProfFragment extends Fragment {
             super(itemView);
             itemView.setOnClickListener(this);
 
-            profNameTextView = (TextView)itemView.findViewById(R.id.list_item_professor_name);
-            profPicImageView = (ImageView)itemView.findViewById(R.id.list_item_professor_pic);
+            profNameTextView = (TextView) itemView.findViewById(R.id.list_item_professor_name);
+            profPicImageView = (ImageView) itemView.findViewById(R.id.list_item_professor_pic);
 
         }
 
