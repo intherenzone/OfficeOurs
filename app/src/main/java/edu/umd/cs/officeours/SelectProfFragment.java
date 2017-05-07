@@ -53,7 +53,8 @@ public class SelectProfFragment extends Fragment {
                 startActivity(createStoryIntent);
                 return true;
             case R.id.menu_item_map:
-                Toast.makeText(getContext(), "test this", Toast.LENGTH_SHORT).show();
+                Intent mapIntent = new Intent(getActivity(), MapActivity.class);
+                startActivity(mapIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -104,7 +105,6 @@ public class SelectProfFragment extends Fragment {
         profService.addProfessorToList(davis);
         profService.addProfessorToList(herman);
         //END DEMO SETUP
-
 
         professorRecyclerView = (RecyclerView) view.findViewById(R.id.prof_recycler_view);
         professorRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

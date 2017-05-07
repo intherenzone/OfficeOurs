@@ -9,6 +9,5 @@ public interface ProfService {
     void addProfessorToList(Professor professor);
     List<Professor> getAllProfessors();
     Professor getProfessorByLastName(String profName);
-
-
+    void deleteProfessorFromList(Professor professor);
 }

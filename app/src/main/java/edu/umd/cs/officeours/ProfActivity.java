@@ -3,22 +3,17 @@ package edu.umd.cs.officeours;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import android.graphics.drawable.GradientDrawable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import edu.umd.cs.officeours.model.Course;
@@ -40,8 +35,8 @@ public class ProfActivity extends AppCompatActivity {
         setContentView(R.layout.activity_schedule_select);
 
         profService = DependencyFactory.getProfService(getApplicationContext());
-        List<Professor> profList = profService.getAllProfessors();
-        String profID = getIntent().getStringExtra(EXTRA_PROF);
+        final List<Professor> profList = profService.getAllProfessors();
+        final String profID = getIntent().getStringExtra(EXTRA_PROF);
         Professor currProfessor = null;
 
         for(Professor p : profList){
@@ -50,8 +45,9 @@ public class ProfActivity extends AppCompatActivity {
                 break;
             }
         }
+
         final Professor currProfessorFinal = currProfessor;
-        TextView profNameTextView = (TextView) findViewById(R.id.professor_name);
+        final TextView profNameTextView = (TextView) findViewById(R.id.professor_name);
         profNameTextView.setText(currProfessor.getFName() + " " + currProfessor.getLName());
 
         Button homeButton = (Button) findViewById(R.id.home_button);
@@ -134,6 +130,17 @@ public class ProfActivity extends AppCompatActivity {
             }
         });
 
+        Button deleteButton = (Button) findViewById(R.id.delete_button);
+        deleteButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                profService.deleteProfessorFromList(currProfessorFinal);
+                Toast.makeText(getApplicationContext(), "Delete" + " " + currProfessorFinal.getFName().toString()
+                        + " " +currProfessorFinal.getLName().toString() + " " + "Successfully", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
+
         TextView officeHoursTextView = (TextView) findViewById(R.id.office_hour_text);
         Calendar calendar = Calendar.getInstance();
         String dayOfWeekNumber = String.valueOf(calendar.get(Calendar.DAY_OF_WEEK));
@@ -211,8 +218,6 @@ public class ProfActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_PROF, id);
         return intent;
     }
-
-
 
 
 }

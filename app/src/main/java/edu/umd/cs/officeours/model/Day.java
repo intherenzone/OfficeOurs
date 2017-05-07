@@ -11,6 +11,16 @@ public class Day {
     private LinkedList<TimeSlot> timeSlots;
     private DayEnum dayEnum;
 
+    public Day(DayEnum dayEnum) {
+        this.timeSlots = new LinkedList<TimeSlot>();
+        this.dayEnum = dayEnum;
+    }
+
+    public boolean setTimeSlot(int startTime, int endTime) {
+        this.timeSlots.add(new TimeSlot(startTime, endTime));
+        return true;
+    }
+
     //ALL TIMESLOTS MUST NOT HAVE LEADING 0'S!! IT mess UP THE TIME CONVERSION.
     public class TimeSlot{
         public int startTime;
@@ -22,8 +32,9 @@ public class Day {
         }
     }
 
-
-    public LinkedList<TimeSlot> getTimeSlots(){return this.timeSlots;}
+    public LinkedList<TimeSlot> getTimeSlots() {
+        return this.timeSlots;
+    }
 
     public static String TimeSlotsToString(LinkedList<TimeSlot> timeSlots){
         if(timeSlots.size() == 0){return NO_HOURS_MESSAGE;}
@@ -61,19 +72,6 @@ public class Day {
 
         return output;
 
-    }
-
-
-
-
-    public Day(DayEnum dayEnum) {
-        this.timeSlots = new LinkedList<TimeSlot>();
-        this.dayEnum = dayEnum;
-    }
-
-    public boolean setTimeSlot(int startTime, int endTime) {
-        this.timeSlots.add(new TimeSlot(startTime, endTime));
-        return true;
     }
 
     public DayEnum getDayEnum() {
