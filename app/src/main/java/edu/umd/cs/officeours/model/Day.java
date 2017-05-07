@@ -10,7 +10,8 @@ public class Day {
 
     private LinkedList<TimeSlot> timeSlots;
     private DayEnum dayEnum;
-    //ALL TIMESLOTS MUST NOT HAVE LEADING 0'S!! IT FUCKS UP THE TIME CONVERSION.
+
+    //ALL TIMESLOTS MUST NOT HAVE LEADING 0'S!! IT mess UP THE TIME CONVERSION.
     public class TimeSlot{
         public int startTime;
         public int endTime;
@@ -19,6 +20,7 @@ public class Day {
             this.endTime = endTime;
         }
     }
+
 
     public LinkedList<TimeSlot> getTimeSlots(){return this.timeSlots;}
 
