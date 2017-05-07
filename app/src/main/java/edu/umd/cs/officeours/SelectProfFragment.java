@@ -106,7 +106,6 @@ public class SelectProfFragment extends Fragment {
         profService.addProfessorToList(herman);
         //END DEMO SETUP
 
-
         professorRecyclerView = (RecyclerView) view.findViewById(R.id.prof_recycler_view);
         professorRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

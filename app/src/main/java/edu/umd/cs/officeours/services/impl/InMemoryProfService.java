@@ -36,6 +36,12 @@ public class InMemoryProfService implements ProfService{
         }
     }
 
+    public void deleteProfessorFromList(Professor professor) {
+        if (professor != null) {
+            professorList.remove(professor);
+        }
+    }
+
     public Professor getProfessorByLastName(String profLName){
         if(profLName == null){return null;}
         for(Professor prof : professorList){
