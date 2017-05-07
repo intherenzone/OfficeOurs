@@ -39,6 +39,7 @@ public class Day {
 
     }
 
+    //LEADING 0'S MEAN OCTAL (NOT DECIMAL BASE)
     public static String milToStandard(int milTime){
 
         String output;
@@ -60,20 +61,6 @@ public class Day {
 
         return output;
 
-
-//        SimpleDateFormat sdf = null;
-//        Date date = null;
-//        Log.i("milTime int", String.valueOf(milTime));
-//        try{
-//
-//            date = new SimpleDateFormat("hhmm").parse(String.format("%04d", milTime));
-//            sdf = new SimpleDateFormat("hh:mma");
-//
-//        }catch(ParseException pe){
-//            pe.printStackTrace();
-//        }
-//        Log.i("TEST",sdf.format(date));
-//        return sdf.format(date);
     }
 
 
