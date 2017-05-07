@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import edu.umd.cs.officeours.model.DayEnum;
 import edu.umd.cs.officeours.model.Professor;
 import edu.umd.cs.officeours.services.ProfService;
 
@@ -44,7 +45,8 @@ public class createProfessor extends AppCompatActivity {
                                             @Override
                                             public void onClick(View v) {
                                                 Intent createHourIntent = new Intent(getBaseContext(), setProHour.class);
-                                                startActivity(createHourIntent);
+                                                createHourIntent.putExtra("day", DayEnum.MONDAY);
+                                                startActivityForResult(createHourIntent, 2);
                                             }
                                         }
         );
@@ -125,4 +127,13 @@ public class createProfessor extends AppCompatActivity {
         );
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if (requestCode == 2) {
+//            String message=data.getStringExtra("MESSAGE");
+//            textView1.setText(message);
+        }
+    }
 }
