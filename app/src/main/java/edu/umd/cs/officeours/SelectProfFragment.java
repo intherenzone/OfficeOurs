@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,7 +33,7 @@ public class SelectProfFragment extends Fragment {
     private ProfessorAdapter adapter;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         profService = DependencyFactory.getProfService(getActivity().getApplicationContext());
@@ -46,9 +46,9 @@ public class SelectProfFragment extends Fragment {
         inflater.inflate(R.menu.fragment_prof_select, menu);
     }
 
-    @Nullable
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_prof_select, container, false);
 
         //THIS IS FOR DEMO SETUP.
