@@ -46,21 +46,21 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/mondayButton"
+                    android:id="@+id/monday_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/officeHourMonday" />
 
                 <Button
-                    android:id="@+id/tuesdayButton"
+                    android:id="@+id/tuesday_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/officeHourTuesday" />
 
                 <Button
-                    android:id="@+id/wednesdayButton"
+                    android:id="@+id/wednesday_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -73,29 +73,29 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/thursdayButton"
+                    android:id="@+id/thursday_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/officeHourThursday" />
 
                 <Button
-                    android:id="@+id/fridayButton"
+                    android:id="@+id/friday_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/officeHourFriday" />
 
                 <Button
-                    android:id="@+id/saturdayButton"
+                    android:id="@+id/saturday_Button"
                     android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/officeHourSaturday" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/sundayButton"
+                android:id="@+id/sunday_Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -194,13 +194,13 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/save_story_button"
+                android:id="@+id/save_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/saveButton" />
 
             <Button
-                android:id="@+id/cancel_story_button"
+                android:id="@+id/cancel_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cancelButton" />
