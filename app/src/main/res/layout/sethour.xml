@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:id="@+id/StartTimeDisplay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.5"
+        android:textSize="100sp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/startTimePickerButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.5"
+        android:text="Set Start Time" />
+
+    <TextView
+        android:id="@+id/EndTimeDisplay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.5"
+        android:textSize="100sp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/endTimePickerButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.5"
+        android:text="Set End Time" />
+
+    <Button
+        android:id="@+id/timeSaveButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.5"
+        android:text="Save" />
+</LinearLayout>
