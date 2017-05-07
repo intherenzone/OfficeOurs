@@ -20,14 +20,14 @@
             android:background="@android:color/holo_blue_bright"
             android:text="Home"/>
 
-        <DigitalClock
-            android:id="@+id/digital_clock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight = "true"
-            android:layout_weight="1"
-            android:textAlignment="viewEnd"
-            android:layout_gravity="end"/>
+        <!--<DigitalClock-->
+            <!--android:id="@+id/digital_clock"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight = "true"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textAlignment="viewEnd"-->
+            <!--android:layout_gravity="end"/>-->
     </LinearLayout>
 
     <ImageView
@@ -45,16 +45,26 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/preious_floor_button"
-            android:text="Previous Floor"
-            android:layout_weight="1"
-            />
-
+            android:id="@+id/first_floor_button"
+            android:text="@string/first_floor_button"
+            android:layout_weight="1" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/next_floor_button"
-            android:layout_weight="2"
-            android:text="Next Floor" />
+            android:id="@+id/second_floor_button"
+            android:layout_weight="1"
+            android:text="@string/second_floor_button" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/third_floor_button"
+            android:layout_weight="1"
+            android:text="@string/third_floor_button" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fourth_floor_button"
+            android:layout_weight="1"
+            android:text="@string/fourth_floor_button" />
     </LinearLayout>
 </LinearLayout>
