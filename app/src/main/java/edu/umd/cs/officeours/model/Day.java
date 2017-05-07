@@ -18,6 +18,7 @@ public class Day {
         public TimeSlot(int startTime, int endTime){
             this.startTime = startTime;
             this.endTime = endTime;
+            //test this
         }
     }
 
