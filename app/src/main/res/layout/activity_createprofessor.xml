@@ -35,54 +35,74 @@
             android:text="@string/officehours"
             android:textStyle="bold" />
 
-        <RadioGroup
-            android:id="@+id/radio_group"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/mondayButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/officeHourMonday" />
+
+                <Button
+                    android:id="@+id/tuesdayButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/officeHourTuesday" />
+
+                <Button
+                    android:id="@+id/wednesdayButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/officeHourWednesday" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/thursdayButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/officeHourThursday" />
+
+                <Button
+                    android:id="@+id/fridayButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/officeHourFriday" />
+
+                <Button
+                    android:id="@+id/saturdayButton"
+                    android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                    android:layout_weight="1"
+                    android:text="@string/officeHourSaturday" />
+            </LinearLayout>
 
-            <RadioButton
-                android:id="@+id/radio_Monday"
+            <Button
+                android:id="@+id/sundayButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" M" />
+                android:layout_weight="1"
+                android:text="@string/officeHourSunday" />
 
-            <RadioButton
-                android:id="@+id/radio_Tuesday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="T" />
+        </LinearLayout>
 
-            <RadioButton
-                android:id="@+id/radio_Wednesday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="W" />
-
-            <RadioButton
-                android:id="@+id/radio_Thursday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Th" />
-
-            <RadioButton
-                android:id="@+id/radio_Friday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="F" />
-
-            <RadioButton
-                android:id="@+id/radio_Saturday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sat" />
-
-            <RadioButton
-                android:id="@+id/radio_Sunday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sun" />
-        </RadioGroup>
 
         <TextView
             android:layout_width="match_parent"
