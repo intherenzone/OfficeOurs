@@ -18,6 +18,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import edu.umd.cs.officeours.model.Course;
+import edu.umd.cs.officeours.model.Day;
+import edu.umd.cs.officeours.model.DayEnum;
 import edu.umd.cs.officeours.model.Professor;
 import edu.umd.cs.officeours.services.ProfService;
 
@@ -50,27 +52,36 @@ public class ProfActivity extends AppCompatActivity {
         String dayOfWeekNumber = String.valueOf(calendar.get(Calendar.DAY_OF_WEEK));
 
         //GONNA CHANGE THIS TO SHOW OFFICE HOURS FOR THAT PARTICULAR DAY
+        Day day;
         switch(dayOfWeekNumber){
             case "1":
-                officeHoursTextView.setText("Sunday");
+                day = currProfessor.getScheduleForDay(DayEnum.SUNDAY);
+                officeHoursTextView.setText(Day.TimeSlotsToString(day.getTimeSlots()));
                 break;
             case "2":
-                officeHoursTextView.setText("Monday");
+                day = currProfessor.getScheduleForDay(DayEnum.MONDAY);
+                officeHoursTextView.setText(Day.TimeSlotsToString(day.getTimeSlots()));
                 break;
             case "3":
-                officeHoursTextView.setText("Tuesday");
+                day = currProfessor.getScheduleForDay(DayEnum.TUESDAY);
+                officeHoursTextView.setText(Day.TimeSlotsToString(day.getTimeSlots()));
                 break;
             case "4":
-                officeHoursTextView.setText("Wednesday");
+                day = currProfessor.getScheduleForDay(DayEnum.WEDNESDAY);
+                officeHoursTextView.setText(Day.TimeSlotsToString(day.getTimeSlots()));
                 break;
             case "5":
-                officeHoursTextView.setText("Thursday");
+                day = currProfessor.getScheduleForDay(DayEnum.THURSDAY);
+                officeHoursTextView.setText(Day.TimeSlotsToString(day.getTimeSlots()));
+
                 break;
             case "6":
-                officeHoursTextView.setText("Friday");
+                day = currProfessor.getScheduleForDay(DayEnum.FRIDAY);
+                officeHoursTextView.setText(Day.TimeSlotsToString(day.getTimeSlots()));
                 break;
             default:
-                officeHoursTextView.setText("Saturday");
+                day = currProfessor.getScheduleForDay(DayEnum.SATURDAY);
+                officeHoursTextView.setText(Day.TimeSlotsToString(day.getTimeSlots()));
                 break;
         }
 
