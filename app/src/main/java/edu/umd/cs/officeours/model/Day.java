@@ -57,7 +57,7 @@ public class Day {
         int tempMins = milTime % 100;
         if(tempMins < 10){ output = output + "0" + tempMins + ampm;}
         else{ output = output + tempMins + ampm;}
-        System.out.println("this is time test:"+output);
+
         return output;
 
 
