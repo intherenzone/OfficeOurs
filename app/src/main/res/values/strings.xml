@@ -1,14 +1,18 @@
 <resources>
     <string name="app_name">OfficeOurs</string>
     <string name="button1">Button1</string>
-
     <string name="button2">Button2</string>
-
     <string name="button3">Button3</string>
-
     <string name="button4">Button4</string>
-
     <string name="button5">Button5</string>
+
+    <string name="officeHourMonday">Monday</string>
+    <string name="officeHourTuesday">Tuesday</string>
+    <string name="officeHourWednesday">Wednesday</string>
+    <string name="officeHourThursday">Thursday</string>
+    <string name="officeHourFriday">Friday</string>
+    <string name="officeHourSaturday">Saturday</string>
+    <string name="officeHourSunday">Sunday</string>
 
     <string name="Name">Professor Name :</string>
     <string name="officehours">Professor Office Hour :</string>

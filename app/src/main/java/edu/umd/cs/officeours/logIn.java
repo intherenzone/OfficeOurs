@@ -26,7 +26,9 @@ public class logIn extends AppCompatActivity {
                 if (user.getText().toString().equals("admin") && pass.getText().toString().equals("1")) {
                     Toast.makeText(getApplicationContext(), "connecting...", Toast.LENGTH_SHORT).show();
                     Intent createStoryIntent = new Intent(getBaseContext(), createProfessor.class);
+                    finish();
                     startActivity(createStoryIntent);
+
                 } else {
                     Toast.makeText(getApplicationContext(), "wrong information", Toast.LENGTH_SHORT).show();
                 }
