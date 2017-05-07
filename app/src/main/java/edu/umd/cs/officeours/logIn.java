@@ -34,7 +34,6 @@ public class logIn extends AppCompatActivity {
                 }
             }
         });
-//comment
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
