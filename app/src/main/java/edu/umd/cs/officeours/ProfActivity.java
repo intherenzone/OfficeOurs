@@ -51,7 +51,7 @@ public class ProfActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         String dayOfWeekNumber = String.valueOf(calendar.get(Calendar.DAY_OF_WEEK));
 
-        //GONNA CHANGE THIS TO SHOW OFFICE HOURS FOR THAT PARTICULAR DAY
+
         Day day;
         switch(dayOfWeekNumber){
             case "1":
