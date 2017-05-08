@@ -25,6 +25,7 @@ import edu.umd.cs.officeours.services.ProfService;
 public class ProfActivity extends AppCompatActivity {
 
     private static final String EXTRA_PROF = "PROF";
+    private static final String EXTRA_PROF_POS = "PROF_POS";
     private ProfService profService;
 
 
@@ -136,6 +137,7 @@ public class ProfActivity extends AppCompatActivity {
                 profService.deleteProfessorFromList(currProfessorFinal);
                 Toast.makeText(getApplicationContext(), "Delete" + " " + currProfessorFinal.getFName().toString()
                         + " " +currProfessorFinal.getLName().toString() + " " + "Successfully", Toast.LENGTH_SHORT).show();
+                setResult(RESULT_OK);
                 finish();
             }
         });
@@ -209,7 +211,6 @@ public class ProfActivity extends AppCompatActivity {
         }
 
 
-
     }
 
 
@@ -218,6 +219,8 @@ public class ProfActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_PROF, id);
         return intent;
     }
+
+
 
 
 }

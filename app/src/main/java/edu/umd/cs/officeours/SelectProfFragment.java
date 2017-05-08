@@ -123,8 +123,11 @@ public class SelectProfFragment extends Fragment {
     }
 
 
+
+
     private void updateUI() {
 
+        profService = DependencyFactory.getProfService(getActivity().getApplicationContext());
         List<Professor> professors = profService.getAllProfessors();
 
         if (adapter == null) {
@@ -144,45 +147,45 @@ public class SelectProfFragment extends Fragment {
 
     }
 
-    public static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-
-        if (height > reqHeight || width > reqWidth) {
-
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) >= reqHeight
-                    && (halfWidth / inSampleSize) >= reqWidth) {
-                inSampleSize *= 2;
-            }
-        }
-
-        return inSampleSize;
-    }
-
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
-                                                         int reqWidth, int reqHeight) {
-
-        // First decode with inJustDecodeBounds=true to check dimensions
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
-
-        // Calculate inSampleSize
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-
-        // Decode bitmap with inSampleSize set
-        options.inJustDecodeBounds = false;
-
-        return BitmapFactory.decodeResource(res, resId, options);
-    }
+//    public static int calculateInSampleSize(
+//            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+//        // Raw height and width of image
+//        final int height = options.outHeight;
+//        final int width = options.outWidth;
+//        int inSampleSize = 1;
+//
+//        if (height > reqHeight || width > reqWidth) {
+//
+//            final int halfHeight = height / 2;
+//            final int halfWidth = width / 2;
+//
+//            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+//            // height and width larger than the requested height and width.
+//            while ((halfHeight / inSampleSize) >= reqHeight
+//                    && (halfWidth / inSampleSize) >= reqWidth) {
+//                inSampleSize *= 2;
+//            }
+//        }
+//
+//        return inSampleSize;
+//    }
+//
+//    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+//                                                         int reqWidth, int reqHeight) {
+//
+//        // First decode with inJustDecodeBounds=true to check dimensions
+//        final BitmapFactory.Options options = new BitmapFactory.Options();
+//        options.inJustDecodeBounds = true;
+//        BitmapFactory.decodeResource(res, resId, options);
+//
+//        // Calculate inSampleSize
+//        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+//
+//        // Decode bitmap with inSampleSize set
+//        options.inJustDecodeBounds = false;
+//
+//        return BitmapFactory.decodeResource(res, resId, options);
+//    }
 
     private class ProfessorHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView profNameTextView;
@@ -202,7 +205,6 @@ public class SelectProfFragment extends Fragment {
 
         void bindProfessor(Professor professor) {
             this.professor = professor;
-
             profNameTextView.setText(professor.getFName() + " " + professor.getLName());
             int height = (int) getContext().getResources().getDimension(R.dimen.prof_select_pic_height);
             int width = (int) getContext().getResources().getDimension(R.dimen.prof_select_pic_width);
@@ -214,7 +216,7 @@ public class SelectProfFragment extends Fragment {
         @Override
         public void onClick(View view) {
             Intent intent = ProfActivity.newIntent(getActivity(), professor.getProfID());
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE_CREATE_PROFESSOR);
         }
     }
 
