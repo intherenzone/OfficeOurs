@@ -35,7 +35,6 @@ import static edu.umd.cs.officeours.R.id.end;
 public class createProfessor extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
-    private static final int REQUEST_ADD_COURSE = 2;
     private static final int REQUEST_OFFICE_HOUR_MONDAY = 2;
     private static final int REQUEST_OFFICE_HOUR_TUESDAY = 3;
     private static final int REQUEST_OFFICE_HOUR_WEDNESDAY = 4;
@@ -43,6 +42,7 @@ public class createProfessor extends AppCompatActivity {
     private static final int REQUEST_OFFICE_HOUR_FRIDAY = 6;
     private static final int REQUEST_OFFICE_HOUR_SATURDAY = 7;
     private static final int REQUEST_OFFICE_HOUR_SUNDAY = 8;
+    private static final int REQUEST_ADD_COURSE = 9;
     private Bitmap imageBitmap;
     private Uri imageUri;
     private ImageView photoView;
@@ -285,6 +285,8 @@ public class createProfessor extends AppCompatActivity {
             int[] intOfTime = parseStringTointFunction(toFromTime);
             startTime = intOfTime[0];
             endTime = intOfTime[1];
+        } else if (requestCode == REQUEST_ADD_COURSE && resultCode == RESULT_OK){
+            courses.add(AddCourseActivity.getCourseCreated(data));
         }
     }
 
