@@ -1,7 +1,10 @@
 package edu.umd.cs.officeours;
 
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,6 +27,8 @@ import edu.umd.cs.officeours.model.DayEnum;
 import edu.umd.cs.officeours.model.Professor;
 import edu.umd.cs.officeours.services.ProfService;
 
+import static android.app.Activity.RESULT_OK;
+
 
 public class SelectProfFragment extends Fragment {
     private ProfService profService;
@@ -39,6 +44,7 @@ public class SelectProfFragment extends Fragment {
 
     }
 
+    //testing this
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -49,8 +55,8 @@ public class SelectProfFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item_create_professor:
-                Intent createStoryIntent = new Intent(getActivity(), logIn.class);
-                startActivity(createStoryIntent);
+                Intent createProfessorIntent = new Intent(getActivity(), logIn.class);
+                startActivityForResult(createProfessorIntent, REQUEST_CODE_CREATE_PROFESSOR);
                 return true;
             case R.id.menu_item_map:
                 Intent mapIntent = new Intent(getActivity(), MapActivity.class);
@@ -121,7 +127,6 @@ public class SelectProfFragment extends Fragment {
 
     private void updateUI() {
 
-
         List<Professor> professors = profService.getAllProfessors();
 
         if (adapter == null) {
@@ -133,22 +138,53 @@ public class SelectProfFragment extends Fragment {
         }
     }
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (resultCode != Activity.RESULT_OK) {
-//            return;
-//        }
-//
-//        if (requestCode == REQUEST_CODE_CREATE_STORY) {
-//            if (data == null) {
-//                return;
-//            }
-//
-//            Story storyCreated = StoryActivity.getStoryCreated(data);
-//            storyService.addStoryToBacklog(storyCreated);
-//            updateUI();
-//        }
-//    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_CREATE_PROFESSOR && resultCode == RESULT_OK) {
+            updateUI();
+        }
+
+    }
+
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
+    }
+
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+                                                         int reqWidth, int reqHeight) {
+
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
 
     private class ProfessorHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView profNameTextView;
@@ -170,7 +206,10 @@ public class SelectProfFragment extends Fragment {
             this.professor = professor;
 
             profNameTextView.setText(professor.getFName() + " " + professor.getLName());
-            profPicImageView.setImageBitmap(professor.getPicBitmap());
+            int height = (int) getContext().getResources().getDimension(R.dimen.prof_select_pic_height);
+            int width = (int) getContext().getResources().getDimension(R.dimen.prof_select_pic_width);
+            Bitmap profPicBitmap = Bitmap.createScaledBitmap(professor.getPicBitmap(),width,height,true);
+            profPicImageView.setImageBitmap(profPicBitmap);
 
         }
 

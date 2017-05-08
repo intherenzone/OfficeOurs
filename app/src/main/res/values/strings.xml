@@ -20,7 +20,7 @@
     <string name="officenumber">Professor Office Number :</string>
     <string name="description">Professor Description :</string>
     <string name="listOfCoursesToAdd">List Of Courses To Add :</string>
-    <string name="addCoursesButton">Add Course</string>
+    <string name="add_course_button">Add Course</string>
     <string name="picture">Professor Picture: </string>
     <string name="saveButton">Save</string>
     <string name="cancelButton">Cancel</string>
@@ -34,4 +34,8 @@
     <string name="fourth_floor_button">4F</string>
 
     <string name="courses_header"><u>COURSES</u></string>
+
+    <string name="course_name_label">Course Name:</string>
+    <string name="course_name_hint">e.g. CMSC436-0101</string>
+    <string name="TA_image_label">Take an image of the TA office hours: </string>
 </resources>
