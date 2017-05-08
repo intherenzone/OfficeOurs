@@ -34,4 +34,8 @@
     <string name="fourth_floor_button">4F</string>
 
     <string name="courses_header"><u>COURSES</u></string>
+
+    <string name="course_name_label">Course Name:</string>
+    <string name="course_name_hint">e.g. CMSC436</string>
+    <string name="TA_image_label">Take an image of the TA office hours: </string>
 </resources>

@@ -159,7 +159,13 @@ public class createProfessor extends AppCompatActivity {
                                               professor.setEmail(email);
                                               professor.setOfficeNum(office);
                                               // Image Store
-                                              professor.setPicBitmap(BitmapFactory.decodeFile(imageUri.getPath()));
+                                              if (imageUri == null || BitmapFactory.decodeFile(imageUri.getPath()) == null){
+                                                  professor.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
+                                              }
+                                              else{
+                                                  professor.setPicBitmap(BitmapFactory.decodeFile(imageUri.getPath()));
+                                              }
+
 
                                               finish();
                                           }
@@ -190,8 +196,15 @@ public class createProfessor extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            imageBitmap = BitmapFactory.decodeFile(imageUri.getPath());
-            photoView.setImageBitmap(imageBitmap);
+            if (imageUri == null){
+                photoView.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.default_profile_pic));
+
+            }
+            else{
+                imageBitmap = BitmapFactory.decodeFile(imageUri.getPath());
+                photoView.setImageBitmap(imageBitmap);
+            }
+
         }
     }
 
