@@ -14,12 +14,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
 import edu.umd.cs.officeours.model.Course;
+import edu.umd.cs.officeours.model.DayEnum;
 import edu.umd.cs.officeours.model.Professor;
 import edu.umd.cs.officeours.services.ProfService;
 
@@ -30,6 +32,13 @@ public class createProfessor extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_ADD_COURSE = 2;
+    private static final int REQUEST_OFFICE_HOUR_MONDAY = 2;
+    private static final int REQUEST_OFFICE_HOUR_TUESDAY = 3;
+    private static final int REQUEST_OFFICE_HOUR_WEDNESDAY = 4;
+    private static final int REQUEST_OFFICE_HOUR_THURSDAY = 5;
+    private static final int REQUEST_OFFICE_HOUR_FRIDAY = 6;
+    private static final int REQUEST_OFFICE_HOUR_SATURDAY = 7;
+    private static final int REQUEST_OFFICE_HOUR_SUNDAY = 8;
     private Bitmap imageBitmap;
     private Uri imageUri;
     private ImageView photoView;
@@ -42,6 +51,7 @@ public class createProfessor extends AppCompatActivity {
     private ImageButton cameraButton;
     public List<Course> courses;
     private Professor professor;
+    Intent createHourIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +79,8 @@ public class createProfessor extends AppCompatActivity {
         mondayButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                Intent createHourIntent = new Intent(getBaseContext(), setProHour.class);
-                                                startActivity(createHourIntent);
+                                                createHourIntent = new Intent(getBaseContext(), setProHour.class);
+                                                startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_MONDAY);
                                             }
                                         }
         );
@@ -78,7 +88,8 @@ public class createProfessor extends AppCompatActivity {
         tuesdayButton.setOnClickListener(new View.OnClickListener() {
                                              @Override
                                              public void onClick(View v) {
-
+                                                 createHourIntent = new Intent(getBaseContext(), setProHour.class);
+                                                 startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_TUESDAY);
                                              }
                                          }
         );
@@ -195,8 +206,6 @@ public class createProfessor extends AppCompatActivity {
                                         }
         );
     }
-
-
     private File getPhotoFile(){
         File externalPhotoDir = this.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 
@@ -220,11 +229,23 @@ public class createProfessor extends AppCompatActivity {
                 photoView.setImageBitmap(imageBitmap);
             }
 
+        } else if (requestCode == REQUEST_OFFICE_HOUR_MONDAY && resultCode == RESULT_OK) {
+            String toFromTime = data.getStringExtra("MESSAGE");
+            Toast.makeText(getApplicationContext(), "we made it to monday" + toFromTime, Toast.LENGTH_SHORT).show();
+
+        } else if (requestCode == REQUEST_OFFICE_HOUR_TUESDAY && resultCode == RESULT_OK) {
+            String toFromTime = data.getStringExtra("MESSAGE");
+            Toast.makeText(getApplicationContext(), "we made it to TUESDAY" + toFromTime, Toast.LENGTH_SHORT).show();
+
         }
-        if (requestCode == REQUEST_ADD_COURSE && resultCode == RESULT_OK){
+        else if (requestCode == REQUEST_ADD_COURSE && resultCode == RESULT_OK){
             Course course = AddCourseActivity.getCourseCreated(data);
             courses.add(course);
         }
+    }
+
+    public int[] parseStringTointFunction(String toFromTime) {
+        return null;
     }
 
 }
