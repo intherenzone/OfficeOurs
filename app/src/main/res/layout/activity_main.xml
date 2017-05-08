@@ -1,110 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/umdimg13"
     >
-    <!-- the title-->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#00fffacd"
-        android:layout_margin="10dp"
-        android:gravity="center"
         android:layout_weight="1.0"
-        >
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Task Setup"
-        android:textSize="50dp"
-        />
-        </LinearLayout>
-    <!--the first row buttons task1, and 2-->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#00fffacd"
-        android:layout_margin="10dp"
-        android:layout_weight="1.0"
-        >
+        android:gravity="center">
 
         <Button
-            android:id="@+id/button1"
-            android:gravity="center"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:text="Task 1&#10;Status = Available,Please Knock"
-            android:background="@drawable/border1"
-            android:layout_weight="1.0"
-            android:layout_margin="10dp"
-        />
-
-        <Button
-            android:id="@+id/button2"
-            android:gravity="center"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:text="Task 2&#10;Other prof status = Back in 5 minutes"
-            android:background="@drawable/border2"
-            android:layout_weight="1.0"
-            android:layout_margin="10dp"
-            />
-    </LinearLayout>
-    <!--the second row buttons task3, and 4-->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#00fffacd"
-        android:layout_margin="10dp"
-        android:layout_weight="1.0"
-        >
-        <Button
-            android:id="@+id/button3"
-            android:gravity="center"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:text="Task 3&#10;Open professor interface&#10;in a new tab"
-            android:background="@drawable/border3"
-            android:layout_weight="1.0"
-            android:layout_margin="10dp"
-            />
-
-        <Button
-            android:id="@+id/button4"
-            android:gravity="center"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:text="Task 4&#10;status = away"
-            android:background="@drawable/border4"
-            android:layout_weight="1.0"
-            android:layout_margin="10dp"
-            />
-    </LinearLayout>
-    <!--the third row buttons task5-->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#00fffacd"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:layout_weight="1.0"
-        >
-        <Button
-            android:id="@+id/button5"
-            android:gravity="center"
-            android:layout_width="160dp"
-            android:layout_height="match_parent"
-            android:text="Task 4&#10;status = Do not Disturb"
-            android:background="@drawable/border5"
-
-            android:layout_margin="10dp"
-            />
+            android:id="@+id/start_button"
+            android:layout_width="160sp"
+            android:layout_height="160sp"
+            android:background="@drawable/ic_pets_black"
+            android:text="START"
+            android:paddingTop="80sp"
+            android:textColor="#eaeaea"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

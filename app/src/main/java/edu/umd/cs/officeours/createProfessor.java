@@ -66,7 +66,7 @@ public class createProfessor extends AppCompatActivity {
         courses = new LinkedList<>();
         professor = new Professor();
         setContentView(R.layout.activity_createprofessor);
-        ProfService listOfProfessors = DependencyFactory.getProfService(getApplication());
+        final ProfService listOfProfessors = DependencyFactory.getProfService(getApplication());
         photoView = (ImageView) findViewById(R.id.professorPhotoID);
         cameraButton = (ImageButton) findViewById(cameraID);
         mondayButton = (Button) findViewById(R.id.monday_Button);
@@ -187,9 +187,6 @@ public class createProfessor extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_ADD_COURSE);
             }
         });
-
-
-
         //end ,when saved it clicked
         saveButton.setOnClickListener(new View.OnClickListener() {
                                           @Override
@@ -216,8 +213,8 @@ public class createProfessor extends AppCompatActivity {
                                               else{
                                                   professor.setPicBitmap(BitmapFactory.decodeFile(imageUri.getPath()));
                                               }
-
-
+                                              listOfProfessors.addProfessorToList(professor);
+                                              setResult(RESULT_OK, getIntent());
                                               finish();
                                           }
                                       }
@@ -226,6 +223,7 @@ public class createProfessor extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
+                                                setResult(RESULT_CANCELED);
                                                 finish();
                                             }
                                         }

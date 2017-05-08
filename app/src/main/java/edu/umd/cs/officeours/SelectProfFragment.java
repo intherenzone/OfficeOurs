@@ -1,6 +1,7 @@
 package edu.umd.cs.officeours;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -25,6 +26,8 @@ import edu.umd.cs.officeours.model.Course;
 import edu.umd.cs.officeours.model.DayEnum;
 import edu.umd.cs.officeours.model.Professor;
 import edu.umd.cs.officeours.services.ProfService;
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class SelectProfFragment extends Fragment {
@@ -52,8 +55,8 @@ public class SelectProfFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item_create_professor:
-                Intent createStoryIntent = new Intent(getActivity(), logIn.class);
-                startActivity(createStoryIntent);
+                Intent createProfessorIntent = new Intent(getActivity(), logIn.class);
+                startActivityForResult(createProfessorIntent, REQUEST_CODE_CREATE_PROFESSOR);
                 return true;
             case R.id.menu_item_map:
                 Intent mapIntent = new Intent(getActivity(), MapActivity.class);
@@ -135,22 +138,13 @@ public class SelectProfFragment extends Fragment {
         }
     }
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (resultCode != Activity.RESULT_OK) {
-//            return;
-//        }
-//
-//        if (requestCode == REQUEST_CODE_CREATE_STORY) {
-//            if (data == null) {
-//                return;
-//            }
-//
-//            Story storyCreated = StoryActivity.getStoryCreated(data);
-//            storyService.addStoryToBacklog(storyCreated);
-//            updateUI();
-//        }
-//    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_CREATE_PROFESSOR && resultCode == RESULT_OK) {
+            updateUI();
+        }
+
+    }
 
     public static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
