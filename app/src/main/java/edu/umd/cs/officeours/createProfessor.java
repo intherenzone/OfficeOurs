@@ -16,9 +16,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.Arrays;
 import java.io.File;
 
-import edu.umd.cs.officeours.model.DayEnum;
 import edu.umd.cs.officeours.model.Professor;
 import edu.umd.cs.officeours.services.ProfService;
 
@@ -228,6 +228,13 @@ public class createProfessor extends AppCompatActivity {
     }
 
     public int[] parseStringTointFunction(String toFromTime) {
+        String[] parts = toFromTime.split(",");
+        String[] parts1 = parts[0].split(":");
+        String[] parts2 = parts[1].split(":");
+        String[] returnArray = new String[parts1.length + parts2.length];
+        for (int i = 0; i < returnArray.length; i++) {
+            
+        }
         return null;
     }
 
