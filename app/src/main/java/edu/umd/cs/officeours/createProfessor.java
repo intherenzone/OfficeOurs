@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.Arrays;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
@@ -228,7 +229,6 @@ public class createProfessor extends AppCompatActivity {
                 imageBitmap = BitmapFactory.decodeFile(imageUri.getPath());
                 photoView.setImageBitmap(imageBitmap);
             }
-
         } else if (requestCode == REQUEST_OFFICE_HOUR_MONDAY && resultCode == RESULT_OK) {
             String toFromTime = data.getStringExtra("MESSAGE");
             Toast.makeText(getApplicationContext(), "we made it to monday" + toFromTime, Toast.LENGTH_SHORT).show();
@@ -245,6 +245,13 @@ public class createProfessor extends AppCompatActivity {
     }
 
     public int[] parseStringTointFunction(String toFromTime) {
+        String[] parts = toFromTime.split(",");
+        String[] parts1 = parts[0].split(":");
+        String[] parts2 = parts[1].split(":");
+        String[] returnArray = new String[parts1.length + parts2.length];
+        for (int i = 0; i < returnArray.length; i++) {
+
+        }
         return null;
     }
 
