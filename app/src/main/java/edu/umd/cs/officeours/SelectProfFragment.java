@@ -121,7 +121,6 @@ public class SelectProfFragment extends Fragment {
 
     private void updateUI() {
 
-
         List<Professor> professors = profService.getAllProfessors();
 
         if (adapter == null) {
