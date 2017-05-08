@@ -1,14 +1,16 @@
 package edu.umd.cs.officeours;
-
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import edu.umd.cs.officeours.model.DayEnum;
 import java.util.Calendar;
 
 /**
@@ -38,7 +40,12 @@ public class setProHour extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-
+                String startTime = startTimeTime.getText().toString();
+                String endTime = endTimeText.getText().toString();
+                Intent intent = new Intent();
+                intent.putExtra("MESSAGE", startTime + "," + endTime);
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
         // add a click listener to the button

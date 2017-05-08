@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -27,6 +28,13 @@ import static edu.umd.cs.officeours.R.id.cameraID;
 public class createProfessor extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_OFFICE_HOUR_MONDAY = 2;
+    private static final int REQUEST_OFFICE_HOUR_TUESDAY = 3;
+    private static final int REQUEST_OFFICE_HOUR_WEDNESDAY = 4;
+    private static final int REQUEST_OFFICE_HOUR_THURSDAY = 5;
+    private static final int REQUEST_OFFICE_HOUR_FRIDAY = 6;
+    private static final int REQUEST_OFFICE_HOUR_SATURDAY = 7;
+    private static final int REQUEST_OFFICE_HOUR_SUNDAY = 8;
     private Bitmap imageBitmap;
     private Uri imageUri;
     private ImageView photoView;
@@ -38,6 +46,7 @@ public class createProfessor extends AppCompatActivity {
             fridayButton, saturdayButton, sundayButton, saveButton, cancelButton;
     private ImageButton cameraButton;
     private Professor professor;
+    Intent createHourIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +72,8 @@ public class createProfessor extends AppCompatActivity {
         mondayButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                Intent createHourIntent = new Intent(getBaseContext(), setProHour.class);
-                                                createHourIntent.putExtra("day", DayEnum.MONDAY);
-                                                startActivityForResult(createHourIntent, 2);
+                                                createHourIntent = new Intent(getBaseContext(), setProHour.class);
+                                                startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_MONDAY);
                                             }
                                         }
         );
@@ -73,7 +81,8 @@ public class createProfessor extends AppCompatActivity {
         tuesdayButton.setOnClickListener(new View.OnClickListener() {
                                              @Override
                                              public void onClick(View v) {
-
+                                                 createHourIntent = new Intent(getBaseContext(), setProHour.class);
+                                                 startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_TUESDAY);
                                              }
                                          }
         );
@@ -176,18 +185,6 @@ public class createProfessor extends AppCompatActivity {
                                         }
         );
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        // check if the request code is same as what is passed  here it is 2
-        if (requestCode == 2) {
-//            String message=data.getStringExtra("MESSAGE");
-//            textView1.setText(message);
-        }
-    }
-}
-
     private File getPhotoFile(){
         File externalPhotoDir = this.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 
@@ -204,7 +201,19 @@ public class createProfessor extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             imageBitmap = BitmapFactory.decodeFile(imageUri.getPath());
             photoView.setImageBitmap(imageBitmap);
+        } else if (requestCode == REQUEST_OFFICE_HOUR_MONDAY && resultCode == RESULT_OK) {
+            String toFromTime = data.getStringExtra("MESSAGE");
+            Toast.makeText(getApplicationContext(), "we made it to monday" + toFromTime, Toast.LENGTH_SHORT).show();
+
+        } else if (requestCode == REQUEST_OFFICE_HOUR_TUESDAY && resultCode == RESULT_OK) {
+            String toFromTime = data.getStringExtra("MESSAGE");
+            Toast.makeText(getApplicationContext(), "we made it to TUESDAY" + toFromTime, Toast.LENGTH_SHORT).show();
+
         }
+    }
+
+    public int[] parseStringTointFunction(String toFromTime) {
+        return null;
     }
 
 }
