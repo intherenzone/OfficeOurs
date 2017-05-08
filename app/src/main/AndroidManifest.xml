@@ -18,6 +18,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".ProfActivity" />
         <activity android:name=".StatusActivity" />
+        <activity android:name=".AddCourseActivity" />
         <activity android:name=".logIn" />
         <activity android:name=".createProfessor" />
         <activity android:name=".setProHour" />
