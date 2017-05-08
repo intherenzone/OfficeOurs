@@ -185,6 +185,9 @@ public class createProfessor extends AppCompatActivity {
                                               professor.setDescription(description);
                                               professor.setEmail(email);
                                               professor.setOfficeNum(office);
+                                              for(Course course : courses){
+                                                  professor.setCourse(course);
+                                              }
                                               // Image Store
                                               if (imageUri == null || BitmapFactory.decodeFile(imageUri.getPath()) == null){
                                                   professor.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
