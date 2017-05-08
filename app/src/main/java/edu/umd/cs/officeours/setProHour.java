@@ -18,7 +18,7 @@ import java.util.Calendar;
  */
 public class setProHour extends AppCompatActivity {
     private TextView startTimeTime, endTimeText;
-    private Button startTimeButton, endTimeButton, saveButton;
+    private Button startTimeButton, endTimeButton, saveButton, cancelButton;
     private int mHour;
     private int mMinute;
 
@@ -36,7 +36,7 @@ public class setProHour extends AppCompatActivity {
         startTimeButton = (Button) findViewById(R.id.startTimePickerButton);
         endTimeButton = (Button) findViewById(R.id.endTimePickerButton);
         saveButton = (Button) findViewById(R.id.timeSaveButton);
-
+        cancelButton = (Button) findViewById(R.id.cancelTimeButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -63,6 +63,13 @@ public class setProHour extends AppCompatActivity {
             }
         });
 
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                setResult(RESULT_CANCELED);
+                finish();
+            }
+        });
         // get the current time
         final Calendar c = Calendar.getInstance();
         mHour = c.get(Calendar.HOUR_OF_DAY);

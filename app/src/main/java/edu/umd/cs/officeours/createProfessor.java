@@ -90,7 +90,7 @@ public class createProfessor extends AppCompatActivity {
                                             public void onClick(View v) {
                                                 createHourIntent = new Intent(getBaseContext(), setProHour.class);
                                                 startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_MONDAY);
-                                                professor.setScheduleForDay(DayEnum.MONDAY, startTime, endTime);
+
                                             }
                                         }
         );
@@ -100,7 +100,7 @@ public class createProfessor extends AppCompatActivity {
                                              public void onClick(View v) {
                                                  createHourIntent = new Intent(getBaseContext(), setProHour.class);
                                                  startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_TUESDAY);
-                                                 professor.setScheduleForDay(DayEnum.TUESDAY, startTime, endTime);
+
                                              }
                                          }
         );
@@ -110,7 +110,7 @@ public class createProfessor extends AppCompatActivity {
                                                public void onClick(View v) {
                                                    createHourIntent = new Intent(getBaseContext(), setProHour.class);
                                                    startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_WEDNESDAY);
-                                                   professor.setScheduleForDay(DayEnum.WEDNESDAY, startTime, endTime);
+
                                                }
                                            }
         );
@@ -120,7 +120,7 @@ public class createProfessor extends AppCompatActivity {
                                               public void onClick(View v) {
                                                   createHourIntent = new Intent(getBaseContext(), setProHour.class);
                                                   startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_THURSDAY);
-                                                  professor.setScheduleForDay(DayEnum.THURSDAY, startTime, endTime);
+
                                               }
                                           }
         );
@@ -130,7 +130,7 @@ public class createProfessor extends AppCompatActivity {
                                             public void onClick(View v) {
                                                 createHourIntent = new Intent(getBaseContext(), setProHour.class);
                                                 startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_FRIDAY);
-                                                professor.setScheduleForDay(DayEnum.FRIDAY, startTime, endTime);
+
                                             }
                                         }
         );
@@ -140,7 +140,7 @@ public class createProfessor extends AppCompatActivity {
                                               public void onClick(View v) {
                                                   createHourIntent = new Intent(getBaseContext(), setProHour.class);
                                                   startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_SATURDAY);
-                                                  professor.setScheduleForDay(DayEnum.SATURDAY, startTime, endTime);
+
                                               }
                                           }
         );
@@ -150,7 +150,7 @@ public class createProfessor extends AppCompatActivity {
                                             public void onClick(View v) {
                                                 createHourIntent = new Intent(getBaseContext(), setProHour.class);
                                                 startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_SUNDAY);
-                                                professor.setScheduleForDay(DayEnum.SUNDAY, startTime, endTime);
+
                                             }
                                         }
         );
@@ -258,36 +258,43 @@ public class createProfessor extends AppCompatActivity {
             int[] intOfTime = parseStringTointFunction(toFromTime);
             startTime = intOfTime[0];
             endTime = intOfTime[1];
+            professor.setScheduleForDay(DayEnum.MONDAY, startTime, endTime);
         } else if (requestCode == REQUEST_OFFICE_HOUR_TUESDAY && resultCode == RESULT_OK) {
             String toFromTime = data.getStringExtra("MESSAGE");
             int[] intOfTime = parseStringTointFunction(toFromTime);
             startTime = intOfTime[0];
             endTime = intOfTime[1];
+            professor.setScheduleForDay(DayEnum.TUESDAY, startTime, endTime);
         } else if (requestCode == REQUEST_OFFICE_HOUR_WEDNESDAY && resultCode == RESULT_OK) {
             String toFromTime = data.getStringExtra("MESSAGE");
             int[] intOfTime = parseStringTointFunction(toFromTime);
             startTime = intOfTime[0];
             endTime = intOfTime[1];
+            professor.setScheduleForDay(DayEnum.WEDNESDAY, startTime, endTime);
         } else if (requestCode == REQUEST_OFFICE_HOUR_THURSDAY && resultCode == RESULT_OK) {
             String toFromTime = data.getStringExtra("MESSAGE");
             int[] intOfTime = parseStringTointFunction(toFromTime);
             startTime = intOfTime[0];
             endTime = intOfTime[1];
+            professor.setScheduleForDay(DayEnum.THURSDAY, startTime, endTime);
         } else if (requestCode == REQUEST_OFFICE_HOUR_FRIDAY && resultCode == RESULT_OK) {
             String toFromTime = data.getStringExtra("MESSAGE");
             int[] intOfTime = parseStringTointFunction(toFromTime);
             startTime = intOfTime[0];
             endTime = intOfTime[1];
+            professor.setScheduleForDay(DayEnum.FRIDAY, startTime, endTime);
         } else if (requestCode == REQUEST_OFFICE_HOUR_SATURDAY && resultCode == RESULT_OK) {
             String toFromTime = data.getStringExtra("MESSAGE");
             int[] intOfTime = parseStringTointFunction(toFromTime);
             startTime = intOfTime[0];
             endTime = intOfTime[1];
+            professor.setScheduleForDay(DayEnum.SATURDAY, startTime, endTime);
         } else if (requestCode == REQUEST_OFFICE_HOUR_SUNDAY && resultCode == RESULT_OK) {
             String toFromTime = data.getStringExtra("MESSAGE");
             int[] intOfTime = parseStringTointFunction(toFromTime);
             startTime = intOfTime[0];
             endTime = intOfTime[1];
+            professor.setScheduleForDay(DayEnum.SUNDAY, startTime, endTime);
         } else if (requestCode == REQUEST_ADD_COURSE && resultCode == RESULT_OK){
             Course course = AddCourseActivity.getCourseCreated(data);
             courses.add(course);
