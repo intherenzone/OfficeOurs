@@ -14,14 +14,14 @@
     <string name="officeHourSaturday">Saturday</string>
     <string name="officeHourSunday">Sunday</string>
 
-    <string name="Name">Professor Name :</string>
-    <string name="officehours">Professor Office Hour :</string>
-    <string name="email">Professor Email :</string>
-    <string name="officenumber">Professor Office Number :</string>
-    <string name="description">Professor Description :</string>
+    <string name="Name">Name :</string>
+    <string name="officehours">Office Hour :</string>
+    <string name="email">Email :</string>
+    <string name="phoneNumber">Phone Number :</string>
+    <string name="description">Description :</string>
     <string name="listOfCoursesToAdd">List Of Courses To Add :</string>
     <string name="add_course_button">Add Course</string>
-    <string name="picture">Professor Picture: </string>
+    <string name="picture">Picture: </string>
     <string name="saveButton">Save</string>
     <string name="cancelButton">Cancel</string>
 
@@ -38,4 +38,7 @@
     <string name="course_name_label">Course Name:</string>
     <string name="course_name_hint">e.g. CMSC436-0101</string>
     <string name="TA_image_label">Take an image of the TA office hours: </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
