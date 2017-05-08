@@ -4,4 +4,5 @@
     <item name="BIO_ID" type="id" />
     <item name="TA_HOURS_ID" type="id" />
     <item name="BUTTON_CLUSTER_ID" type="id" />
+    <item name="MAP_ID" type = "id"/>
 </resources>
