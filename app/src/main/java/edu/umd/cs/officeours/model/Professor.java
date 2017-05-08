@@ -125,7 +125,7 @@ public class Professor implements Serializable, Comparable<Professor> {
     }
 
     @Override
-    public int compareTo(@NonNull Professor professor){
+    public int compareTo(Professor professor) {
         if(this.getLName().compareTo(professor.getLName()) > 0){
             return 1;
         }else if(this.getLName().compareTo(professor.getLName()) < 0){

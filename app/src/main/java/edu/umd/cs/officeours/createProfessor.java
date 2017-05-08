@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -19,10 +20,12 @@ import android.widget.Toast;
 import java.util.Arrays;
 import java.io.File;
 
+import edu.umd.cs.officeours.model.DayEnum;
 import edu.umd.cs.officeours.model.Professor;
 import edu.umd.cs.officeours.services.ProfService;
 
 import static edu.umd.cs.officeours.R.id.cameraID;
+import static edu.umd.cs.officeours.R.id.end;
 
 //need to do professor picture and add course
 public class createProfessor extends AppCompatActivity {
@@ -47,6 +50,7 @@ public class createProfessor extends AppCompatActivity {
     private ImageButton cameraButton;
     private Professor professor;
     Intent createHourIntent;
+    private int startTime, endTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +78,7 @@ public class createProfessor extends AppCompatActivity {
                                             public void onClick(View v) {
                                                 createHourIntent = new Intent(getBaseContext(), setProHour.class);
                                                 startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_MONDAY);
+                                                professor.setScheduleForDay(DayEnum.MONDAY, startTime, endTime);
                                             }
                                         }
         );
@@ -83,6 +88,7 @@ public class createProfessor extends AppCompatActivity {
                                              public void onClick(View v) {
                                                  createHourIntent = new Intent(getBaseContext(), setProHour.class);
                                                  startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_TUESDAY);
+                                                 professor.setScheduleForDay(DayEnum.TUESDAY, startTime, endTime);
                                              }
                                          }
         );
@@ -90,7 +96,9 @@ public class createProfessor extends AppCompatActivity {
         wednesdayButton.setOnClickListener(new View.OnClickListener() {
                                                @Override
                                                public void onClick(View v) {
-
+                                                   createHourIntent = new Intent(getBaseContext(), setProHour.class);
+                                                   startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_WEDNESDAY);
+                                                   professor.setScheduleForDay(DayEnum.WEDNESDAY, startTime, endTime);
                                                }
                                            }
         );
@@ -98,7 +106,9 @@ public class createProfessor extends AppCompatActivity {
         thursdayButton.setOnClickListener(new View.OnClickListener() {
                                               @Override
                                               public void onClick(View v) {
-
+                                                  createHourIntent = new Intent(getBaseContext(), setProHour.class);
+                                                  startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_THURSDAY);
+                                                  professor.setScheduleForDay(DayEnum.THURSDAY, startTime, endTime);
                                               }
                                           }
         );
@@ -106,7 +116,9 @@ public class createProfessor extends AppCompatActivity {
         fridayButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-
+                                                createHourIntent = new Intent(getBaseContext(), setProHour.class);
+                                                startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_FRIDAY);
+                                                professor.setScheduleForDay(DayEnum.FRIDAY, startTime, endTime);
                                             }
                                         }
         );
@@ -114,7 +126,9 @@ public class createProfessor extends AppCompatActivity {
         saturdayButton.setOnClickListener(new View.OnClickListener() {
                                               @Override
                                               public void onClick(View v) {
-
+                                                  createHourIntent = new Intent(getBaseContext(), setProHour.class);
+                                                  startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_SATURDAY);
+                                                  professor.setScheduleForDay(DayEnum.SATURDAY, startTime, endTime);
                                               }
                                           }
         );
@@ -122,7 +136,9 @@ public class createProfessor extends AppCompatActivity {
         sundayButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-
+                                                createHourIntent = new Intent(getBaseContext(), setProHour.class);
+                                                startActivityForResult(createHourIntent, REQUEST_OFFICE_HOUR_SUNDAY);
+                                                professor.setScheduleForDay(DayEnum.SUNDAY, startTime, endTime);
                                             }
                                         }
         );
@@ -218,12 +234,39 @@ public class createProfessor extends AppCompatActivity {
             photoView.setImageBitmap(imageBitmap);
         } else if (requestCode == REQUEST_OFFICE_HOUR_MONDAY && resultCode == RESULT_OK) {
             String toFromTime = data.getStringExtra("MESSAGE");
-            Toast.makeText(getApplicationContext(), "we made it to monday" + toFromTime, Toast.LENGTH_SHORT).show();
-
+            int[] intOfTime = parseStringTointFunction(toFromTime);
+            startTime = intOfTime[0];
+            endTime = intOfTime[1];
         } else if (requestCode == REQUEST_OFFICE_HOUR_TUESDAY && resultCode == RESULT_OK) {
             String toFromTime = data.getStringExtra("MESSAGE");
-            Toast.makeText(getApplicationContext(), "we made it to TUESDAY" + toFromTime, Toast.LENGTH_SHORT).show();
-
+            int[] intOfTime = parseStringTointFunction(toFromTime);
+            startTime = intOfTime[0];
+            endTime = intOfTime[1];
+        } else if (requestCode == REQUEST_OFFICE_HOUR_WEDNESDAY && resultCode == RESULT_OK) {
+            String toFromTime = data.getStringExtra("MESSAGE");
+            int[] intOfTime = parseStringTointFunction(toFromTime);
+            startTime = intOfTime[0];
+            endTime = intOfTime[1];
+        } else if (requestCode == REQUEST_OFFICE_HOUR_THURSDAY && resultCode == RESULT_OK) {
+            String toFromTime = data.getStringExtra("MESSAGE");
+            int[] intOfTime = parseStringTointFunction(toFromTime);
+            startTime = intOfTime[0];
+            endTime = intOfTime[1];
+        } else if (requestCode == REQUEST_OFFICE_HOUR_FRIDAY && resultCode == RESULT_OK) {
+            String toFromTime = data.getStringExtra("MESSAGE");
+            int[] intOfTime = parseStringTointFunction(toFromTime);
+            startTime = intOfTime[0];
+            endTime = intOfTime[1];
+        } else if (requestCode == REQUEST_OFFICE_HOUR_SATURDAY && resultCode == RESULT_OK) {
+            String toFromTime = data.getStringExtra("MESSAGE");
+            int[] intOfTime = parseStringTointFunction(toFromTime);
+            startTime = intOfTime[0];
+            endTime = intOfTime[1];
+        } else if (requestCode == REQUEST_OFFICE_HOUR_SUNDAY && resultCode == RESULT_OK) {
+            String toFromTime = data.getStringExtra("MESSAGE");
+            int[] intOfTime = parseStringTointFunction(toFromTime);
+            startTime = intOfTime[0];
+            endTime = intOfTime[1];
         }
     }
 
@@ -231,11 +274,25 @@ public class createProfessor extends AppCompatActivity {
         String[] parts = toFromTime.split(",");
         String[] parts1 = parts[0].split(":");
         String[] parts2 = parts[1].split(":");
-        String[] returnArray = new String[parts1.length + parts2.length];
-        for (int i = 0; i < returnArray.length; i++) {
-            
+        int[] returnArray = new int[2];
+        int temp = Integer.parseInt(parts1[1]);
+        if (temp <= 10) {
+            parts1[1] = parts1[1];
+            parts1[0] += parts1[1];
+        } else {
+            parts1[0] += parts1[1];
         }
-        return null;
+
+        temp = Integer.parseInt(parts2[1]);
+        if (temp <= 10) {
+            parts2[1] = parts2[1];
+            parts2[0] += parts2[1];
+        } else {
+            parts2[0] += parts2[1];
+        }
+        returnArray[0] = Integer.parseInt(parts1[0]);
+        returnArray[1] = Integer.parseInt(parts2[0]);
+        return returnArray;
     }
 
 }
