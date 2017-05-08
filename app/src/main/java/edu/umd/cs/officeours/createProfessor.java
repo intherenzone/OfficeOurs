@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -50,6 +51,7 @@ public class createProfessor extends AppCompatActivity {
     private EditText professorEmail;
     private EditText professorOfficeNumber;
     private EditText professorDescription;
+    private TextView courseListTextView;
     private Button mondayButton, tuesdayButton, wednesdayButton, thursdayButton,
             fridayButton, saturdayButton, sundayButton, saveButton, cancelButton, addCourseButton;
     private ImageButton cameraButton;
@@ -81,6 +83,7 @@ public class createProfessor extends AppCompatActivity {
         professorEmail = (EditText) findViewById(R.id.professorEmailID);
         professorOfficeNumber = (EditText) findViewById(R.id.professorOfficeNumberID);
         professorDescription = (EditText) findViewById(R.id.professorDescriptionID);
+        courseListTextView = (TextView) findViewById(R.id.list_of_courses);
 
         mondayButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -293,7 +296,15 @@ public class createProfessor extends AppCompatActivity {
             endTime = intOfTime[1];
             professor.setScheduleForDay(DayEnum.SUNDAY, startTime, endTime);
         } else if (requestCode == REQUEST_ADD_COURSE && resultCode == RESULT_OK){
-            courses.add(AddCourseActivity.getCourseCreated(data));
+            Course course = AddCourseActivity.getCourseCreated(data);
+            courses.add(course);
+            if (courseListTextView.getText() == null || courseListTextView.getText().toString().length() == 0){
+                courseListTextView.append(course.getCourseName());
+            }
+            else{
+                courseListTextView.append(System.getProperty("line.separator") + course.getCourseName());
+            }
+
         }
     }
 

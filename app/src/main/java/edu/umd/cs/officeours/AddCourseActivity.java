@@ -21,7 +21,8 @@ import java.io.File;
 import edu.umd.cs.officeours.model.Course;
 
 public class AddCourseActivity  extends AppCompatActivity {
-    private final static String EXTRA_COURSE_CREATED = "COURSE";
+    private final static String EXTRA_COURSE_CREATED_NAME = "NAME";
+    private final static String EXTRA_COURSE_CREATED_BITMAP = "BITMAP";
     private static final int REQUEST_PHOTO = 1;
     private Course course;
 
@@ -40,7 +41,6 @@ public class AddCourseActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_add_course);
 
         bitmap = null;
-        course_name = (EditText)findViewById(R.id.course_name);
 
         imageView = (ImageView)findViewById(R.id.photo);
         imageView.setBackgroundColor(Color.rgb(128,128,128));
@@ -68,12 +68,15 @@ public class AddCourseActivity  extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                course = new Course(course_name.getText().toString());
-                course.setTAOfficeHours(bitmap);
+                course_name = (EditText)findViewById(R.id.course_name);
+//                course = new Course(course_name.getText().toString());
+//                course.setTAOfficeHours(bitmap);
                 Intent data = new Intent();
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(EXTRA_COURSE_CREATED, course);
-                data.putExtra(EXTRA_COURSE_CREATED, bundle);
+                int height = (int) getApplicationContext().getResources().getDimension(R.dimen.ta_hours_pic_height);
+                int width = (int) getApplicationContext().getResources().getDimension(R.dimen.ta_hours_pic_width);
+
+                data.putExtra(EXTRA_COURSE_CREATED_NAME, course_name.getText().toString());
+                data.putExtra(EXTRA_COURSE_CREATED_BITMAP, Bitmap.createScaledBitmap(bitmap,width,height,true));
                 setResult(RESULT_OK, data);
                 finish();
             }
@@ -109,7 +112,10 @@ public class AddCourseActivity  extends AppCompatActivity {
     }
 
     public static Course getCourseCreated(Intent data){
-        Bundle bundle = data.getParcelableExtra(EXTRA_COURSE_CREATED);
-        return (Course) bundle.getParcelable(EXTRA_COURSE_CREATED);
+        Bitmap bitmap = data.getParcelableExtra(EXTRA_COURSE_CREATED_BITMAP);
+        String name = data.getStringExtra(EXTRA_COURSE_CREATED_NAME);
+        Course course = new Course(name);
+        course.setTAOfficeHours(bitmap);
+        return course;
     }
 }
