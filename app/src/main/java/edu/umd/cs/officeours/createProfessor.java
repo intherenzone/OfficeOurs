@@ -62,6 +62,7 @@ public class createProfessor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         courses = new LinkedList<>();
+        professor = new Professor();
         setContentView(R.layout.activity_createprofessor);
         ProfService listOfProfessors = DependencyFactory.getProfService(getApplication());
         photoView = (ImageView) findViewById(R.id.professorPhotoID);
@@ -197,7 +198,8 @@ public class createProfessor extends AppCompatActivity {
                                               int i = name.indexOf(" "); // 4
                                               String firstName = name.substring(0, i); // from 0 to
                                               String lastName = name.substring(i + 1);
-                                              professor = new Professor(firstName, lastName);
+                                              professor.setlName(lastName);
+                                              professor.setFName(firstName);
                                               professor.setDescription(description);
                                               professor.setEmail(email);
                                               professor.setOfficeNum(office);
