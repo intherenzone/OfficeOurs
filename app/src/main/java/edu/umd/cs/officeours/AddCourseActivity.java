@@ -22,7 +22,7 @@ import edu.umd.cs.officeours.model.Course;
 
 public class AddCourseActivity  extends AppCompatActivity {
     private final static String EXTRA_COURSE_CREATED = "COURSE";
-    private static final int REQUEST_PHOTO = 74686;
+    private static final int REQUEST_PHOTO = 1;
     private Course course;
 
     private EditText course_name;
@@ -71,7 +71,9 @@ public class AddCourseActivity  extends AppCompatActivity {
                 course = new Course(course_name.getText().toString());
                 course.setTAOfficeHours(bitmap);
                 Intent data = new Intent();
-                data.putExtra(EXTRA_COURSE_CREATED, course);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(EXTRA_COURSE_CREATED, course);
+                data.putExtra(EXTRA_COURSE_CREATED, bundle);
                 setResult(RESULT_OK, data);
                 finish();
             }
@@ -104,5 +106,10 @@ public class AddCourseActivity  extends AppCompatActivity {
             return null;
         }
         return new File(externalPhotoDir,"IMG_"+ System.currentTimeMillis()+".jpg");
+    }
+
+    public static Course getCourseCreated(Intent data){
+        Bundle bundle = data.getParcelableExtra(EXTRA_COURSE_CREATED);
+        return (Course) bundle.getParcelable(EXTRA_COURSE_CREATED);
     }
 }
