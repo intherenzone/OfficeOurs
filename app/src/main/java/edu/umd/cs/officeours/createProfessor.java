@@ -16,7 +16,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.io.File;
+import java.util.LinkedList;
+import java.util.List;
 
+import edu.umd.cs.officeours.model.Course;
 import edu.umd.cs.officeours.model.Professor;
 import edu.umd.cs.officeours.services.ProfService;
 
@@ -26,6 +29,7 @@ import static edu.umd.cs.officeours.R.id.cameraID;
 public class createProfessor extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_ADD_COURSE = 2;
     private Bitmap imageBitmap;
     private Uri imageUri;
     private ImageView photoView;
@@ -34,13 +38,15 @@ public class createProfessor extends AppCompatActivity {
     private EditText professorOfficeNumber;
     private EditText professorDescription;
     private Button mondayButton, tuesdayButton, wednesdayButton, thursdayButton,
-            fridayButton, saturdayButton, sundayButton, saveButton, cancelButton;
+            fridayButton, saturdayButton, sundayButton, saveButton, cancelButton, addCourseButton;
     private ImageButton cameraButton;
+    public List<Course> courses;
     private Professor professor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        courses = new LinkedList<>();
         setContentView(R.layout.activity_createprofessor);
         ProfService listOfProfessors = DependencyFactory.getProfService(getApplication());
         photoView = (ImageView) findViewById(R.id.professorPhotoID);
@@ -52,6 +58,7 @@ public class createProfessor extends AppCompatActivity {
         fridayButton = (Button) findViewById(R.id.friday_Button);
         saturdayButton = (Button) findViewById(R.id.saturday_Button);
         sundayButton = (Button) findViewById(R.id.sunday_Button);
+        addCourseButton = (Button) findViewById(R.id.add_course_button);
         saveButton = (Button) findViewById(R.id.save_button);
         cancelButton = (Button) findViewById(R.id.cancel_button);
         professorName = (EditText) findViewById(R.id.professorNameID);
@@ -141,6 +148,14 @@ public class createProfessor extends AppCompatActivity {
             }
         });
 
+        addCourseButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AddCourseActivity.class);
+                startActivityForResult(intent, REQUEST_ADD_COURSE);
+            }
+        });
+
 
 
         //end ,when saved it clicked
@@ -205,6 +220,10 @@ public class createProfessor extends AppCompatActivity {
                 photoView.setImageBitmap(imageBitmap);
             }
 
+        }
+        if (requestCode == REQUEST_ADD_COURSE && resultCode == RESULT_OK){
+            Course course = AddCourseActivity.getCourseCreated(data);
+            courses.add(course);
         }
     }
 

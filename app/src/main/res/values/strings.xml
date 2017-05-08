@@ -20,7 +20,7 @@
     <string name="officenumber">Professor Office Number :</string>
     <string name="description">Professor Description :</string>
     <string name="listOfCoursesToAdd">List Of Courses To Add :</string>
-    <string name="addCoursesButton">Add Course</string>
+    <string name="add_course_button">Add Course</string>
     <string name="picture">Professor Picture: </string>
     <string name="saveButton">Save</string>
     <string name="cancelButton">Cancel</string>
