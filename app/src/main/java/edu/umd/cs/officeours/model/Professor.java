@@ -21,6 +21,15 @@ public class Professor implements Serializable, Comparable<Professor> {
     private String description;
     public List<Course> courses;
 
+    public Professor() {
+        this.id = UUID.randomUUID().toString();
+        days = new Day[7];
+        int dayIndex = 0;
+        for (DayEnum dayEnum : DayEnum.values()) {
+            days[dayIndex++] = new Day(dayEnum);
+        }
+        courses = new LinkedList<>();
+    }
     //This can handle professors with identical names. Might be a problem if searching by name.
     public Professor(String fName,String lName){
         //Storing every name in upper case for easy comparison.
@@ -35,7 +44,13 @@ public class Professor implements Serializable, Comparable<Professor> {
         courses = new LinkedList<>();
     }
 
+    public void setlName(String lName) {
+        this.lName = lName;
+    }
 
+    public void setFName(String fName) {
+        this.fName = fName;
+    }
     public void setDescription(String description) {
         this.description = description;
     }
@@ -125,7 +140,7 @@ public class Professor implements Serializable, Comparable<Professor> {
     }
 
     @Override
-    public int compareTo(@NonNull Professor professor){
+    public int compareTo(Professor professor) {
         if(this.getLName().compareTo(professor.getLName()) > 0){
             return 1;
         }else if(this.getLName().compareTo(professor.getLName()) < 0){
