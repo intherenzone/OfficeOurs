@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/professor_list"
-    android:background="@drawable/prof_border"
     android:padding="1dp">
 
 
@@ -14,12 +13,16 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:contentDescription="@string/prof_image"/>
+
     <TextView
         android:id="@+id/list_item_professor_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="4dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
         tools:text="Name"/>
+
 
 
     <!--<TextView-->
