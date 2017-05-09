@@ -6,8 +6,6 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -18,8 +16,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/bio_home_button"
-                android:background="@android:color/holo_blue_bright"
-                android:text="Home"/>
+                android:text="Back"/>
 
             <ImageView
                 android:id="@+id/prof_bio_pic"
@@ -28,16 +25,19 @@
                 android:src="@drawable/nelsonpaduaperez"
                 android:layout_gravity="center"
                 android:layout_weight="60"/>
+
             <LinearLayout
+                android:layout_marginTop="5sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:weightSum="1"
                 android:layout_weight="30">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10sp"
+                    android:layout_width="179dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
                     android:orientation="vertical">
                     <TextView
                         android:id="@+id/prof_name"
@@ -61,36 +61,21 @@
                         android:id="@+id/prof_office_num"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="4011"/>
-
+                        android:text="4011"/>s
                 </LinearLayout>
-
-
-
-
-
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5">
+                    android:layout_width="162dp"
+                    android:layout_height="match_parent">
+
                     <TextView
                         android:id="@+id/prof_description"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxEms="13"
-                        android:text="I am involved in cancer research. I love to golf. The best day of my life is when my child was born my my how good. I love salsa dancing"/>
+                        android:text="I am involved in cancer research. I love to golf. The best day of my life is when my child was born. I love salsa dancing" />
                 </LinearLayout>
-
-
-
-
             </LinearLayout>
-
-
-
         </LinearLayout>
-
-
 
 </LinearLayout>
