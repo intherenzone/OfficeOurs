@@ -18,6 +18,7 @@
     <string name="officehours">Office Hour :</string>
     <string name="email">Email :</string>
     <string name="phoneNumber">Phone Number :</string>
+    <string name="officeNumber">Office Number :</string>
     <string name="description">Description :</string>
     <string name="listOfCoursesToAdd">List Of Courses To Add :</string>
     <string name="add_course_button">Add Course</string>

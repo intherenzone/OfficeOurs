@@ -114,6 +114,7 @@
             android:id="@+id/professorEmailID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             android:hint="John_Haha@officeours.com" />
 
         <TextView
@@ -123,11 +124,23 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/professorphoneNumberID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:hint="##########"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/officeNumber"
+            android:textStyle="bold"/>
+
+        <EditText
             android:id="@+id/professorOfficeNumberID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="##########"
-            android:inputType="number" />
+            android:inputType="number"
+            android:hint="####"/>
 
         <TextView
             android:layout_width="match_parent"

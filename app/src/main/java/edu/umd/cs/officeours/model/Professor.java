@@ -1,7 +1,6 @@
 package edu.umd.cs.officeours.model;
 
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ public class Professor implements Serializable, Comparable<Professor> {
     private String email;
     private String officeNum;
     private String description;
+    private String phoneNumber;
     public List<Course> courses;
     ArrayList<String> feedBacks;
 
@@ -87,6 +87,9 @@ public class Professor implements Serializable, Comparable<Professor> {
         return this.email;
     }
 
+    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber; }
+
+    public String getPhoneNumber() { return this.phoneNumber;}
 
     public String getProfID(){return this.id;}
 

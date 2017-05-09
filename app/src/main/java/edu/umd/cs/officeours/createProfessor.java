@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -18,19 +17,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Arrays;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-import edu.umd.cs.officeours.model.DayEnum;
 import edu.umd.cs.officeours.model.Course;
 import edu.umd.cs.officeours.model.DayEnum;
 import edu.umd.cs.officeours.model.Professor;
 import edu.umd.cs.officeours.services.ProfService;
 
 import static edu.umd.cs.officeours.R.id.cameraID;
-import static edu.umd.cs.officeours.R.id.end;
 
 //need to do professor picture and add course
 public class createProfessor extends AppCompatActivity {
@@ -51,6 +47,7 @@ public class createProfessor extends AppCompatActivity {
     private EditText professorEmail;
     private EditText professorOfficeNumber;
     private EditText professorDescription;
+    private EditText professorPhoneNumber;
     private TextView courseListTextView;
     private Button mondayButton, tuesdayButton, wednesdayButton, thursdayButton,
             fridayButton, saturdayButton, sundayButton, saveButton, cancelButton, addCourseButton;
@@ -82,6 +79,7 @@ public class createProfessor extends AppCompatActivity {
         professorName = (EditText) findViewById(R.id.professorNameID);
         professorEmail = (EditText) findViewById(R.id.professorEmailID);
         professorOfficeNumber = (EditText) findViewById(R.id.professorOfficeNumberID);
+        professorPhoneNumber = (EditText) findViewById(R.id.professorphoneNumberID);
         professorDescription = (EditText) findViewById(R.id.professorDescriptionID);
         courseListTextView = (TextView) findViewById(R.id.list_of_courses);
 
@@ -191,31 +189,45 @@ public class createProfessor extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
-                                              String name = professorName.getText().toString();
-                                              String email = professorEmail.getText().toString();
-                                              String office = professorOfficeNumber.getText().toString();
-                                              String description = professorDescription.getText().toString();
-                                              int i = name.indexOf(" "); // 4
-                                              String firstName = name.substring(0, i); // from 0 to
-                                              String lastName = name.substring(i + 1);
-                                              professor.setlName(lastName);
-                                              professor.setFName(firstName);
-                                              professor.setDescription(description);
-                                              professor.setEmail(email);
-                                              professor.setOfficeNum(office);
-                                              for(Course course : courses){
-                                                  professor.setCourse(course);
+                                              if (professorName.getText().toString().isEmpty()) {
+                                                  Toast.makeText(getApplicationContext(), "Please enter your first and last name", Toast.LENGTH_SHORT).show();
+                                              } else if (professorEmail.getText().toString().isEmpty()) {
+                                                  Toast.makeText(getApplicationContext(), "Please enter your email", Toast.LENGTH_SHORT).show();
+                                              } else if (professorOfficeNumber.getText().toString().isEmpty()) {
+                                                  Toast.makeText(getApplicationContext(), "Please enter your office number", Toast.LENGTH_SHORT).show();
+                                              } else if (professorDescription.getText().toString().isEmpty()) {
+                                                  Toast.makeText(getApplicationContext(), "Please enter your description", Toast.LENGTH_SHORT).show();
+                                              } else if (professorPhoneNumber.getText().toString().isEmpty()) {
+                                                  Toast.makeText(getApplicationContext(), "Please enter your phone number", Toast.LENGTH_SHORT).show();
+                                              } else {
+                                                  String name = professorName.getText().toString();
+                                                  String email = professorEmail.getText().toString();
+                                                  String office = professorOfficeNumber.getText().toString();
+                                                  String description = professorDescription.getText().toString();
+                                                  String phoneNumber = professorPhoneNumber.getText().toString();
+                                                  int i = name.indexOf(" "); // 4
+                                                  String firstName = name.substring(0, i); // from 0 to
+                                                  String lastName = name.substring(i + 1);
+                                                  professor.setlName(lastName);
+                                                  professor.setFName(firstName);
+                                                  professor.setDescription(description);
+                                                  professor.setEmail(email);
+                                                  professor.setOfficeNum(office);
+                                                  professor.setPhoneNumber(phoneNumber);
+                                                  for(Course course : courses){
+                                                      professor.setCourse(course);
+                                                  }
+                                                  // Image Store
+                                                  if (imageUri == null || BitmapFactory.decodeFile(imageUri.getPath()) == null){
+                                                      professor.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
+                                                  }
+                                                  else{
+                                                      professor.setPicBitmap(BitmapFactory.decodeFile(imageUri.getPath()));
+                                                  }
+                                                  listOfProfessors.addProfessorToList(professor);
+                                                  setResult(RESULT_OK, getIntent());
+                                                  finish();
                                               }
-                                              // Image Store
-                                              if (imageUri == null || BitmapFactory.decodeFile(imageUri.getPath()) == null){
-                                                  professor.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
-                                              }
-                                              else{
-                                                  professor.setPicBitmap(BitmapFactory.decodeFile(imageUri.getPath()));
-                                              }
-                                              listOfProfessors.addProfessorToList(professor);
-                                              setResult(RESULT_OK, getIntent());
-                                              finish();
                                           }
                                       }
         );
