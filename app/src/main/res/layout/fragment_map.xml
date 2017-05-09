@@ -34,7 +34,8 @@
         android:layout_height="302dp"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:id="@+id/map_layout">
+        android:id="@+id/map_layout"
+        android:layout_marginTop="20dp">
         <ImageView
             android:id="@id/MAP_ID"
             android:layout_width="match_parent"
