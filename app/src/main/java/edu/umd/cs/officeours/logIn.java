@@ -12,6 +12,8 @@ public class logIn extends AppCompatActivity {
     Button login, cancel;
     EditText user, pass;
     private static final int REQUEST_CREATE_PROFESSOR = 9;
+    private static final String DELETE_PROF = "DELETE";
+    private static final String DELETE_OK = "delete_ok";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_log_in);
@@ -24,9 +26,18 @@ public class logIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (user.getText().toString().equals("admin") && pass.getText().toString().equals("1")) {
-                    Toast.makeText(getApplicationContext(), "connecting...", Toast.LENGTH_SHORT).show();
-                    Intent createProfessorIntent = new Intent(getBaseContext(), createProfessor.class);
-                    startActivityForResult(createProfessorIntent, REQUEST_CREATE_PROFESSOR);
+                    if (getIntent().getStringExtra(DELETE_PROF) != null && getIntent().getStringExtra(DELETE_PROF).equals(DELETE_OK)){
+                        setResult(RESULT_OK);
+                        finish();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "connecting...", Toast.LENGTH_SHORT).show();
+                        Intent createProfessorIntent = new Intent(getBaseContext(), createProfessor.class);
+                        startActivityForResult(createProfessorIntent, REQUEST_CREATE_PROFESSOR);
+                    }
+
+
+
 
                 } else {
                     Toast.makeText(getApplicationContext(), "wrong information", Toast.LENGTH_SHORT).show();

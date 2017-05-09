@@ -3,6 +3,7 @@ package edu.umd.cs.officeours;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -25,8 +26,12 @@ import edu.umd.cs.officeours.services.ProfService;
 public class ProfActivity extends AppCompatActivity {
 
     private static final String EXTRA_PROF = "PROF";
+    private static final String DELETE_PROF = "DELETE";
+    private static final String DELETE_OK = "delete_ok";
+    private static final int REQUEST_DELETE_PROF = 666;
     private static final String EXTRA_PROF_POS = "PROF_POS";
     Professor currProfessor;
+    Professor currProfessorFinal;
     private ProfService profService;
     Button homeButton, bioButton, taHoursButton, deleteButton, studentFeedBack;
     LinearLayout buttonCluster;
@@ -49,7 +54,7 @@ public class ProfActivity extends AppCompatActivity {
             }
         }
 
-        final Professor currProfessorFinal = currProfessor;
+        currProfessorFinal = currProfessor;
         final TextView profNameTextView = (TextView) findViewById(R.id.professor_name);
         profNameTextView.setText(currProfessor.getFName() + " " + currProfessor.getLName());
 
@@ -147,11 +152,9 @@ public class ProfActivity extends AppCompatActivity {
         deleteButton = (Button) findViewById(R.id.delete_button);
         deleteButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                profService.deleteProfessorFromList(currProfessorFinal);
-                Toast.makeText(getApplicationContext(), "Delete" + " " + currProfessorFinal.getFName().toString()
-                        + " " +currProfessorFinal.getLName().toString() + " " + "Successfully", Toast.LENGTH_SHORT).show();
-                setResult(RESULT_OK);
-                finish();
+                Intent intent = new Intent(getApplicationContext(), logIn.class);
+                intent.putExtra(DELETE_PROF, DELETE_OK);
+                startActivityForResult(intent, REQUEST_DELETE_PROF);
             }
         });
 
@@ -226,12 +229,24 @@ public class ProfActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_DELETE_PROF && resultCode == RESULT_OK){
+            profService.deleteProfessorFromList(currProfessorFinal);
+            Toast.makeText(getApplicationContext(), "Delete" + " " + currProfessorFinal.getFName()
+                    + " " +currProfessorFinal.getLName() + " " + "Successfully", Toast.LENGTH_SHORT).show();
+            setResult(RESULT_OK);
+            finish();
 
+        }
+    }
     public static Intent newIntent(Context context, String id) {
         Intent intent = new Intent(context, ProfActivity.class);
         intent.putExtra(EXTRA_PROF, id);
         return intent;
     }
+
+
 
 
 
