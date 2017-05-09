@@ -244,7 +244,7 @@ public class createProfessor extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if (imageUri == null){
-                photoView.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.default_profile_pic));
+                photoView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic));
 
             }
             else{
