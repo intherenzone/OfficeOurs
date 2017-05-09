@@ -48,8 +48,8 @@ public class ProfBioActivity extends AppCompatActivity {
         TextView profName = (TextView)findViewById(R.id.prof_name);
         profName.setText(currProfessor.getFName() + " " + currProfessor.getLName());
 
-        TextView profNum = (TextView)findViewById(R.id.prof_num);
-        profNum.setText(currProfessor.GetOfficeNum());
+        TextView profNum = (TextView)findViewById(R.id.prof_phone_num);
+        profNum.setText(currProfessor.getPhoneNumber());
 
         TextView profRoomNum = (TextView)findViewById(R.id.prof_office_num);
         profRoomNum.setText(currProfessor.getOfficeNum());

@@ -111,6 +111,11 @@ public class SelectProfFragment extends Fragment {
         nelson.setScheduleForDay(DayEnum.SATURDAY, 1000, 1200);
         nelson.setScheduleForDay(DayEnum.SATURDAY, 30, 100);
         nelson.setScheduleForDay(DayEnum.SUNDAY, 30, 100);
+
+        nelson.setDescription("I like snowboarding, I like dogs, I love seeing my student miserable, jkjk");
+        nelson.setEmail("nelson@umd.edu");
+        nelson.setOfficeNum("AVW1101");
+        nelson.setPhoneNumber("XXX-XXX-XXXX");
         profService.addProfessorToList(nelson);
         profService.addProfessorToList(kruskal);
         profService.addProfessorToList(gasarch);
