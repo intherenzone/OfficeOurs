@@ -26,8 +26,10 @@ public class ProfActivity extends AppCompatActivity {
 
     private static final String EXTRA_PROF = "PROF";
     private static final String EXTRA_PROF_POS = "PROF_POS";
+    Professor currProfessor;
     private ProfService profService;
-
+    Button homeButton, bioButton, taHoursButton, deleteButton, studentFeedBack;
+    LinearLayout buttonCluster;
 
 
     @Override
@@ -38,7 +40,7 @@ public class ProfActivity extends AppCompatActivity {
         profService = DependencyFactory.getProfService(getApplicationContext());
         final List<Professor> profList = profService.getAllProfessors();
         final String profID = getIntent().getStringExtra(EXTRA_PROF);
-        Professor currProfessor = null;
+        currProfessor = null;
 
         for(Professor p : profList){
             if(p.getProfID().compareTo(profID) == 0){
@@ -51,14 +53,25 @@ public class ProfActivity extends AppCompatActivity {
         final TextView profNameTextView = (TextView) findViewById(R.id.professor_name);
         profNameTextView.setText(currProfessor.getFName() + " " + currProfessor.getLName());
 
-        Button homeButton = (Button) findViewById(R.id.home_button);
+        studentFeedBack = (Button) findViewById(R.id.feedBackButton);
+        //to do this
+        studentFeedBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent startFeedBack = new Intent(getBaseContext(), StudentFeedBackActivity.class);
+                String lName = currProfessor.getLName();
+                startFeedBack.putExtra("proLname", lName);
+                startActivity(startFeedBack);
+            }
+        });
+
+        homeButton = (Button) findViewById(R.id.home_button);
         homeButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 finish();
             }
         });
 
-        Button bioButton = (Button) findViewById(R.id.bio_button);
+        bioButton = (Button) findViewById(R.id.bio_button);
         bioButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 if(findViewById(R.id.BIO_ID) != null){return;}
@@ -75,7 +88,7 @@ public class ProfActivity extends AppCompatActivity {
             }
         });
 
-        Button taHoursButton = (Button) findViewById(R.id.ta_hours_button);
+        taHoursButton = (Button) findViewById(R.id.ta_hours_button);
         final LinearLayout buttonLayout = (LinearLayout) findViewById(R.id.buttonLayout);
         taHoursButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -131,7 +144,7 @@ public class ProfActivity extends AppCompatActivity {
             }
         });
 
-        Button deleteButton = (Button) findViewById(R.id.delete_button);
+        deleteButton = (Button) findViewById(R.id.delete_button);
         deleteButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 profService.deleteProfessorFromList(currProfessorFinal);
@@ -182,7 +195,7 @@ public class ProfActivity extends AppCompatActivity {
 
 
 //        final LinearLayout buttonLayout = (LinearLayout) findViewById(R.id.buttonLayout);
-        LinearLayout buttonCluster = (LinearLayout)findViewById(R.id.buttonCluster);
+        buttonCluster = (LinearLayout) findViewById(R.id.buttonCluster);
         for(final Course course : currProfessor.courses){
             Button button =  new Button(getApplicationContext());
             button.setText(course.getCourseName());
