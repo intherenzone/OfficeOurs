@@ -16,8 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/home_button"
-            android:background="@android:color/holo_blue_bright"
-            android:text="Home"/>
+            android:text="Home"
+            />
 
         <!--<DigitalClock-->
             <!--android:id="@+id/digital_clock"-->
@@ -41,7 +41,8 @@
             android:layout_height="match_parent"
             android:src="@drawable/first_floor"
             android:layout_weight="0.01"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            />
 
     </LinearLayout>
 
