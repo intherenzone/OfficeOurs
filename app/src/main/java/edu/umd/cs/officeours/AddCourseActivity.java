@@ -1,6 +1,7 @@
 package edu.umd.cs.officeours;
 
 
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,12 +18,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import edu.umd.cs.officeours.model.Course;
 
 public class AddCourseActivity  extends AppCompatActivity {
     private final static String EXTRA_COURSE_CREATED_NAME = "NAME";
-    private final static String EXTRA_COURSE_CREATED_BITMAP = "BITMAP";
+    private final static String EXTRA_COURSE_CREATED_BITMAP_FILEPATH = "FILEPATH";
+    private final static String IMAGE_DIRECTORY = "IMAGE_DIRECTORY";
+    private final static String IMAGE_NAME = "IMAGE_NAME";
     private static final int REQUEST_PHOTO = 1;
     private Course course;
 
@@ -76,7 +83,11 @@ public class AddCourseActivity  extends AppCompatActivity {
                 int width = (int) getApplicationContext().getResources().getDimension(R.dimen.ta_hours_pic_width);
 
                 data.putExtra(EXTRA_COURSE_CREATED_NAME, course_name.getText().toString());
-                data.putExtra(EXTRA_COURSE_CREATED_BITMAP, Bitmap.createScaledBitmap(bitmap,width,height,true));
+                if(saveToInternalStorage(Bitmap.createScaledBitmap(bitmap,width,height,true)) != null){
+                    data.putExtra(EXTRA_COURSE_CREATED_BITMAP_FILEPATH,
+                            saveToInternalStorage(Bitmap.createScaledBitmap(bitmap,width,height,true)));
+                }
+
                 setResult(RESULT_OK, data);
                 finish();
             }
@@ -90,6 +101,45 @@ public class AddCourseActivity  extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private String saveToInternalStorage(Bitmap bitmapImage){
+        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        // path to /data/data/yourapp/app_data/imageDir
+        File directory = cw.getDir(IMAGE_DIRECTORY, MODE_PRIVATE);
+        // Create imageDir
+        File mypath = new File(directory,IMAGE_NAME);
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return directory.getAbsolutePath();
+    }
+
+    private static Bitmap loadImageFromStorage(String path)
+    {
+
+        try {
+            File f = new File(path, IMAGE_NAME);
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            return b;
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
@@ -112,10 +162,14 @@ public class AddCourseActivity  extends AppCompatActivity {
     }
 
     public static Course getCourseCreated(Intent data){
-        Bitmap bitmap = data.getParcelableExtra(EXTRA_COURSE_CREATED_BITMAP);
+
+        String bitmapFilePath = data.getStringExtra(EXTRA_COURSE_CREATED_BITMAP_FILEPATH);
         String name = data.getStringExtra(EXTRA_COURSE_CREATED_NAME);
         Course course = new Course(name);
-        course.setTAOfficeHours(bitmap);
+        if(bitmapFilePath != null){
+            Bitmap bitmap = loadImageFromStorage(bitmapFilePath);
+            course.setTAOfficeHours(bitmap);
+        }
         return course;
     }
 }
