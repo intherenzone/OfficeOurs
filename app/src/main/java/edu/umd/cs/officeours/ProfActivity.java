@@ -234,7 +234,7 @@ public class ProfActivity extends AppCompatActivity {
         if (requestCode == REQUEST_DELETE_PROF && resultCode == RESULT_OK){
             profService.deleteProfessorFromList(currProfessorFinal);
             Toast.makeText(getApplicationContext(), "Delete" + " " + currProfessorFinal.getFName()
-                    + " " +currProfessorFinal.getLName() + " " + "Successfully", Toast.LENGTH_SHORT).show();
+                    + " " +currProfessorFinal.getLName() + " " + "Successful", Toast.LENGTH_SHORT).show();
             setResult(RESULT_OK);
             finish();
 
