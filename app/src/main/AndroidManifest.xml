@@ -13,6 +13,7 @@
         <activity android:name=".SelectProfActivity"/>
         <activity android:name=".ProfBioActivity"/>
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,6 +27,8 @@
         <activity android:name=".AddCourseActivity" />
         <activity android:name=".logIn" />
         <activity android:name=".createProfessor" />
+
+
         <activity android:name=".setProHour" />
         <activity android:name=".StudentFeedBackActivity"/>
     </application>
