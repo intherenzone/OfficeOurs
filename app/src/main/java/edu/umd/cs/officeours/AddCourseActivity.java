@@ -83,7 +83,7 @@ public class AddCourseActivity  extends AppCompatActivity {
                 int width = (int) getApplicationContext().getResources().getDimension(R.dimen.ta_hours_pic_width);
 
                 data.putExtra(EXTRA_COURSE_CREATED_NAME, course_name.getText().toString());
-                if(saveToInternalStorage(Bitmap.createScaledBitmap(bitmap,width,height,true)) != null){
+                if( bitmap != null && saveToInternalStorage(Bitmap.createScaledBitmap(bitmap,width,height,true)) != null){
                     data.putExtra(EXTRA_COURSE_CREATED_BITMAP_FILEPATH,
                             saveToInternalStorage(Bitmap.createScaledBitmap(bitmap,width,height,true)));
                 }
