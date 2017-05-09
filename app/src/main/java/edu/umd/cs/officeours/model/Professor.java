@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -20,6 +21,7 @@ public class Professor implements Serializable, Comparable<Professor> {
     private String officeNum;
     private String description;
     public List<Course> courses;
+    ArrayList<String> feedBacks;
 
     public Professor() {
         this.id = UUID.randomUUID().toString();
@@ -29,6 +31,7 @@ public class Professor implements Serializable, Comparable<Professor> {
             days[dayIndex++] = new Day(dayEnum);
         }
         courses = new LinkedList<>();
+        feedBacks = new ArrayList<String>();
     }
     //This can handle professors with identical names. Might be a problem if searching by name.
     public Professor(String fName,String lName){
@@ -42,12 +45,21 @@ public class Professor implements Serializable, Comparable<Professor> {
             days[dayIndex++] = new Day(dayEnum);
         }
         courses = new LinkedList<>();
+        feedBacks = new ArrayList<String>();
     }
 
     public void setlName(String lName) {
         this.lName = lName;
     }
 
+    public void setFeedBacks(String feedbacks) {
+
+        feedBacks.add(feedbacks);
+    }
+
+    public List<String> getFeedBackList() {
+        return feedBacks;
+    }
     public void setFName(String fName) {
         this.fName = fName;
     }

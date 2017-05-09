@@ -183,7 +183,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Student Feedback"
+            android:text="Gossip Zone"
             android:id="@+id/feedBackButton" />
 
     </LinearLayout>

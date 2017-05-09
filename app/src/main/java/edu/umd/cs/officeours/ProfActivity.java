@@ -26,6 +26,7 @@ public class ProfActivity extends AppCompatActivity {
 
     private static final String EXTRA_PROF = "PROF";
     private static final String EXTRA_PROF_POS = "PROF_POS";
+    Professor currProfessor;
     private ProfService profService;
     Button homeButton, bioButton, taHoursButton, deleteButton, studentFeedBack;
     LinearLayout buttonCluster;
@@ -39,7 +40,7 @@ public class ProfActivity extends AppCompatActivity {
         profService = DependencyFactory.getProfService(getApplicationContext());
         final List<Professor> profList = profService.getAllProfessors();
         final String profID = getIntent().getStringExtra(EXTRA_PROF);
-        Professor currProfessor = null;
+        currProfessor = null;
 
         for(Professor p : profList){
             if(p.getProfID().compareTo(profID) == 0){
@@ -56,7 +57,10 @@ public class ProfActivity extends AppCompatActivity {
         //to do this
         studentFeedBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
+                Intent startFeedBack = new Intent(getBaseContext(), StudentFeedBackActivity.class);
+                String lName = currProfessor.getLName();
+                startFeedBack.putExtra("proLname", lName);
+                startActivity(startFeedBack);
             }
         });
 
