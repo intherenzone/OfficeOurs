@@ -73,6 +73,7 @@ public class StudentFeedBackFragment extends Fragment {
                     temp = temp + " " + inputBox.getText().toString() + "\n" + "(Submitted on: "
                             + date.toString() + ")" + "\r\n";
                     currentProfessor.setFeedBacks(temp);
+                    inputBox.setText("");
                     mainBox.setText(temp + "\r\n" + prevText);
                 }
             }

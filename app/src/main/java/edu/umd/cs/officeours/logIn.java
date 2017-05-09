@@ -35,7 +35,7 @@ public class logIn extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user.getText().toString().equals("admin") && pass.getText().toString().equals("1")) {
+                if (user.getText().toString().equals("admin") && pass.getText().toString().equals("password")) {
                     if (getIntent().getStringExtra(DELETE_PROF) != null && getIntent().getStringExtra(DELETE_PROF).equals(DELETE_OK)){
                         setResult(RESULT_OK);
                         finish();
