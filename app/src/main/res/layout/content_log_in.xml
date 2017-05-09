@@ -5,15 +5,28 @@
     android:background="@color/bg_login"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:weightSum="1">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical"
+        android:paddingTop="20sp"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingRight="20dp"
+        android:layout_weight="0.75">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Professor Login"
+            android:layout_gravity="center"
+            android:textSize="30sp"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="#FFFFFF"
+            android:paddingBottom="50sp"/>
 
         <EditText
             android:id="@+id/userName"
