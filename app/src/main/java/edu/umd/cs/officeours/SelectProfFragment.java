@@ -2,7 +2,6 @@ package edu.umd.cs.officeours;
 
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -86,12 +85,23 @@ public class SelectProfFragment extends Fragment {
         gasarch.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.bg));
         herman.setPicBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.hlarry));
         Course course1 = new Course("CMSC216-0101");
+        Bitmap course1Bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
+                R.drawable.nelson216tahours),
+                (int) getResources().getDimension(R.dimen.ta_hours_pic_width),
+                (int) getResources().getDimension(R.dimen.ta_hours_pic_height),
+                true);
+        course1.setTAOfficeHours(course1Bitmap);
         Course course2 = new Course("CMSC351-0101");
         Course course3 = new Course("CMSC132-0101");
+
+        Bitmap course3Bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
+                R.drawable.nelson132tahours),
+                (int) getResources().getDimension(R.dimen.ta_hours_pic_width),
+                (int) getResources().getDimension(R.dimen.ta_hours_pic_height),
+                true);
+        course3.setTAOfficeHours(course3Bitmap);
         Course course4 = new Course("CMSC451-0101");
-        course1.setTAOfficeHours(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_my_calendar));
         course2.setTAOfficeHours(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_my_calendar));
-        course3.setTAOfficeHours(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_my_calendar));
         course4.setTAOfficeHours(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_my_calendar));
         nelson.setCourse(course1);
         nelson.setCourse(course3);
