@@ -74,6 +74,7 @@ public class Professor implements Serializable, Comparable<Professor> {
     public void setOfficeNum(String officeNum) {
         this.officeNum = officeNum;
     }
+    public String getOfficeNum(String officeNum){return this.officeNum;}
 
     public String GetOfficeNum() {
         return this.officeNum;

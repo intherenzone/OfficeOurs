@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/BIO_ID"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/prof_text_layout">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bio_home_button"
+                android:background="@android:color/holo_blue_bright"
+                android:text="Home"/>
+
+            <ImageView
+                android:id="@+id/prof_bio_pic"
+                android:layout_width="match_parent"
+                android:layout_height="325dp"
+                android:src="@drawable/nelsonpaduaperez"
+                android:layout_gravity="center"
+                android:layout_weight="60"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="30">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/prof_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nelson Padua Perez"
+                        android:paddingBottom="@dimen/activity_vertical_margin"/>
+                    <TextView
+                        android:id="@+id/prof_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="301-441-2312"
+                        android:paddingBottom="@dimen/activity_vertical_margin"/>
+                    <TextView
+                        android:id="@+id/prof_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="myemail@email.com"
+                        android:paddingBottom="@dimen/activity_vertical_margin"/>
+                    <TextView
+                        android:id="@+id/prof_office_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4011"/>
+
+                </LinearLayout>
+
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5">
+                    <TextView
+                        android:id="@+id/prof_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxEms="13"
+                        android:text="I am involved in cancer research. I love to golf. The best day of my life is when my child was born my my how good. I love salsa dancing"/>
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+</LinearLayout>
