@@ -47,6 +47,7 @@ public class createProfessor extends AppCompatActivity {
     private EditText professorEmail;
     private EditText professorOfficeNumber;
     private EditText professorDescription;
+    private EditText professorPhoneNumber;
     private TextView courseListTextView;
     private Button mondayButton, tuesdayButton, wednesdayButton, thursdayButton,
             fridayButton, saturdayButton, sundayButton, saveButton, cancelButton, addCourseButton;
@@ -78,6 +79,7 @@ public class createProfessor extends AppCompatActivity {
         professorName = (EditText) findViewById(R.id.professorNameID);
         professorEmail = (EditText) findViewById(R.id.professorEmailID);
         professorOfficeNumber = (EditText) findViewById(R.id.professorOfficeNumberID);
+        professorPhoneNumber = (EditText) findViewById(R.id.professorphoneNumberID);
         professorDescription = (EditText) findViewById(R.id.professorDescriptionID);
         courseListTextView = (TextView) findViewById(R.id.list_of_courses);
 
@@ -192,14 +194,17 @@ public class createProfessor extends AppCompatActivity {
                                               } else if (professorEmail.getText().toString().isEmpty()) {
                                                   Toast.makeText(getApplicationContext(), "Please enter your email", Toast.LENGTH_SHORT).show();
                                               } else if (professorOfficeNumber.getText().toString().isEmpty()) {
-                                                  Toast.makeText(getApplicationContext(), "Please enter your phone number", Toast.LENGTH_SHORT).show();
+                                                  Toast.makeText(getApplicationContext(), "Please enter your office number", Toast.LENGTH_SHORT).show();
                                               } else if (professorDescription.getText().toString().isEmpty()) {
                                                   Toast.makeText(getApplicationContext(), "Please enter your description", Toast.LENGTH_SHORT).show();
+                                              } else if (professorPhoneNumber.getText().toString().isEmpty()) {
+                                                  Toast.makeText(getApplicationContext(), "Please enter your phone number", Toast.LENGTH_SHORT).show();
                                               } else {
                                                   String name = professorName.getText().toString();
                                                   String email = professorEmail.getText().toString();
                                                   String office = professorOfficeNumber.getText().toString();
                                                   String description = professorDescription.getText().toString();
+                                                  String phoneNumber = professorPhoneNumber.getText().toString();
                                                   int i = name.indexOf(" "); // 4
                                                   String firstName = name.substring(0, i); // from 0 to
                                                   String lastName = name.substring(i + 1);
@@ -208,6 +213,7 @@ public class createProfessor extends AppCompatActivity {
                                                   professor.setDescription(description);
                                                   professor.setEmail(email);
                                                   professor.setOfficeNum(office);
+                                                  professor.setPhoneNumber(phoneNumber);
                                                   for(Course course : courses){
                                                       professor.setCourse(course);
                                                   }
