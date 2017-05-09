@@ -180,6 +180,12 @@
             android:text="TA HOURS"
             android:id="@+id/ta_hours_button"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gossip Zone"
+            android:id="@+id/feedBackButton" />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"

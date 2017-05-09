@@ -27,7 +27,7 @@
             android:id="@+id/professorNameID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="John Haha" />
+            android:hint="First Last" />
 
         <TextView
             android:layout_width="match_parent"
@@ -36,71 +36,66 @@
             android:textStyle="bold" />
 
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:weightSum=".7"
+            android:background="#E74C3C">
                 <Button
                     android:id="@+id/monday_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/officeHourMonday" />
+                    android:layout_weight=".1"
+                    android:text="@string/officeHourMonday"
+                    android:textAllCaps="false"/>
 
                 <Button
                     android:id="@+id/tuesday_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/officeHourTuesday" />
+                    android:layout_weight=".1"
+                    android:text="@string/officeHourTuesday"
+                    android:textAllCaps="false"/>
 
                 <Button
                     android:id="@+id/wednesday_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/officeHourWednesday" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:layout_weight=".1"
+                    android:text="@string/officeHourWednesday"
+                    android:textAllCaps="false"/>
 
                 <Button
                     android:id="@+id/thursday_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/officeHourThursday" />
+                    android:layout_weight=".1"
+                    android:text="@string/officeHourThursday"
+                    android:textAllCaps="false"/>
 
                 <Button
                     android:id="@+id/friday_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/officeHourFriday" />
+                    android:layout_weight=".1"
+                    android:text="@string/officeHourFriday"
+                    android:textAllCaps="false"/>
 
                 <Button
                     android:id="@+id/saturday_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/officeHourSaturday" />
-            </LinearLayout>
+                    android:layout_weight=".1"
+                    android:text="@string/officeHourSaturday"
+                    android:textAllCaps="false"/>
 
-            <Button
-                android:id="@+id/sunday_Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/officeHourSunday" />
-
+                <Button
+                    android:id="@+id/sunday_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text="@string/officeHourSunday"
+                    android:textAllCaps="false"/>
         </LinearLayout>
 
 
@@ -115,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="John_Haha@officeours.com" />
+            android:hint="example@officeours.com" />
 
         <TextView
             android:layout_width="match_parent"
@@ -128,7 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
-            android:hint="##########"/>
+            android:hint="4102221272"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -140,7 +135,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:hint="####"/>
+            android:hint="0000"/>
 
         <TextView
             android:layout_width="match_parent"
