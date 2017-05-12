@@ -20,10 +20,11 @@ The app was built to solve a very common problem among college students, and
 to be more specific, computer science students at the University of Maryland. As
 a computer science student at UMD, we are provided with a wide array of sources
 for course information. These sources include:
-        + ELMS
-        + Piazza
-        + CS Class Web Pages
-        + Professor Personal Web Page
++ ELMS
++ Piazza
++ CS Class Web Pages
++ Professor Personal Web Page
+
 This can be extremely overwhelming, especially during syllabus week.
 As such, we felt it extremely useful to consolidate this information for the
 student. Additionally, in accordance with our vision for making this information
